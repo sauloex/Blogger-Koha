@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bckup01</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="estilo/style.css">
 </head>
 <body>
 
-     <!--Tabela da versão do koha e descrição do tutorial ou postagem -->
-     <table id="versao"> 
+    <!--Tabela da versão do koha e descrição do tutorial ou postagem -->
+    <table id="versao"> 
         <tr>
           <th>Versão do Koha:</th>
           <td>22.11.07 em..</td>
@@ -22,209 +22,214 @@
           <th>Resumo</th>
           <td>Neste tutorial você aprenderá realizar o Backup do Banco de Dados do Koha pelo Terminal Linux</td>
         </tr>
-      </table>
-      <br>
+    </table><br>
 
-<hr> <!-- Linha horizontal  #############################-->
+        <hr> <!-- Linha horizontal  #############################-->
 
-<div class="corpo"> <!-- Div corpo da postagem -->
-<h3>Inicialmente precisaremos do seguinte:</h3>
+    <div class="corpo"> <!-- Div corpo da postagem -->
+        <h3>Inicialmente precisaremos do seguinte:</h3>
 
-<!--Lita ####################-->
-<ul  type="cicle">
-    <li>Nome de usuário do banco de dados Koha</li>
-    <li>Senha do banco de dados Koha</li>
-    <li>Criar uma pasta para salvar os arquivos Dump gerados</li>
-</ul>
-<!--Div atenção ###################-->
-<div class="atencao"> 
-    <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJqJhf2VhUVnFuqDyB-WdysUaezp9IJuG87ixNrQ3g8BqfMRMD3_yfWn_PfnG_Vw69mx43u5b0EkALRsUL9Xife0_a_Ajv2YC3oJ1Jqxo1_cuKnCTlY9Plg4puQHCA9rYxg-OHn9MCCesx6Ww7kTqrdGxHGPAqCuKBG-dou9LrhkYltgz1kaKNg5kW0lk/s1280/attention-98643_1280.webp" target="_blank">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJqJhf2VhUVnFuqDyB-WdysUaezp9IJuG87ixNrQ3g8BqfMRMD3_yfWn_PfnG_Vw69mx43u5b0EkALRsUL9Xife0_a_Ajv2YC3oJ1Jqxo1_cuKnCTlY9Plg4puQHCA9rYxg-OHn9MCCesx6Ww7kTqrdGxHGPAqCuKBG-dou9LrhkYltgz1kaKNg5kW0lk/w177-h190/attention-98643_1280.webp"/>
-    </a>
-     
-    <p>Para realizar este procedimento você deve ter a senha do usuário root do sistema e ter permissão para editar as pastas do Koha. Se tiver alguma dificuldade sobre isso, peça ajuda ao administrador do sistema.</p>
-    <p>Sugestão de vídeos sobre permissões no linux</p>
-    <p><a href="https://www.youtube.com/watch?v=C-X_HmtGqPk" target="_blank">Permissões de acesso a arquivos e pastas pelo terminal Linux</a></p>
-    <p><a href="https://www.youtube.com/watch?v=nogVVjeeXLg&amp;t=771s" target="_blank">Comando chmod - Alterar permissões pelo terminal – Linux</a></p>
-</div>
-
-<p class="passos">Passo 1- Encontrar o nome de usuário do seu Banco de dados Koha</p>
-<p>O nome de usuário dos seu banco de dados koha (instância) tem a seguinte nomenclatura 'Koha_nome do seu bando de dados'.</p>
-<p>Exemplos: Koha_library, Koha_biblio, Koha_comunit etc.</p>
-<p>Para encontrar acesse a interface administrativa do Koha e clique em 'Sobre o Koha'</p>
-
-<!--Imagem 01###################-->
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8-2zZ3D0rdnpt8Pgg1vjy-kJ6bLw2YWJ-39XlgMtaT2gLt1NnagAxgkWid_vXBzUv1hDPefwq7JUrd42o72IGnwPxFsHsq6jN3IkhQ7nU-X9Z0hArLgD3hy0bW4qz3UBV1kaA5fdTPFtbLIv3Z5RdvpKPBarjuOUNLe4PIxnjPSrqYy0ab1-JeQP1DsM/s699/imagem%2001.png" target="_blank">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8-2zZ3D0rdnpt8Pgg1vjy-kJ6bLw2YWJ-39XlgMtaT2gLt1NnagAxgkWid_vXBzUv1hDPefwq7JUrd42o72IGnwPxFsHsq6jN3IkhQ7nU-X9Z0hArLgD3hy0bW4qz3UBV1kaA5fdTPFtbLIv3Z5RdvpKPBarjuOUNLe4PIxnjPSrqYy0ab1-JeQP1DsM/w400-h299/imagem%2001.png"/>
-</a><br>
-    
-<p>Anote o nome do seu usuário do Bando de Dados Koha conforme exemplo:</p>
-<p>Memcached Servidores: 127.0.0.1:11211 | <b style="background-color:#32CD32">Namespace: koha_XXXXX</b> | Situação: em execução. | Configuração lida de: koha-conf.xml<p>
-<br/>
-
-<!--Imagem 02###################-->
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh39S7pp8oumTMIz08p-MbaK20jy_71LHo8SMrGoSSBRfa_MVjs26gRHEvxnr3lHkFndGwQACTSi4vgPuZf_gOIJ6ongquE_2j6Avsb1QpqlKCqpsZs-TLD1MDC6h4aBF4x8EjraLlWu9K3kQXq6kWkyvX0HxWgIsVZK-txeWPVqNe1BQWotqBvZwjKcP4/s1276/imagem%2002.png" target="_blank">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh39S7pp8oumTMIz08p-MbaK20jy_71LHo8SMrGoSSBRfa_MVjs26gRHEvxnr3lHkFndGwQACTSi4vgPuZf_gOIJ6ongquE_2j6Avsb1QpqlKCqpsZs-TLD1MDC6h4aBF4x8EjraLlWu9K3kQXq6kWkyvX0HxWgIsVZK-txeWPVqNe1BQWotqBvZwjKcP4/w640-h82/imagem%2002.png"/>
-</a>
-<p>Outra forma de visualizar o nome de usuário da sua instância é aplicando comandos no Terminal Linux conforme a seguir:<br />
-<p> 1. Abra o terminal linux e digite </p>
-
-<!-- Primeiro código #############-->
-<pre class="caixa-de-codigo">
-    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-    <p class="codigo">sudo mysql -u root -p</p>
-</pre>
-
-<p>2. Digite a senha do usuário root do linux</p>
-
-<!--Imagem 03###################-->
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ1XpCCZLCyF2Z39NQBq7dkbCBzz-tUmJaCohUq2FsiL94xqHBcWU9sqdeRrR261ex8L5S-niAzGMnchGNN0C_xioQVuSVY2gVqd1lzE09Mwa2n-RBBRGq2FpTLFeZFZzgEYWKcBH4d7qpR9c1CN8gMvDF2oRF5AMJePw7vknv0-K6FNJn7q-_-thpIFo/s729/imagem%2003.png" target="_blank">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ1XpCCZLCyF2Z39NQBq7dkbCBzz-tUmJaCohUq2FsiL94xqHBcWU9sqdeRrR261ex8L5S-niAzGMnchGNN0C_xioQVuSVY2gVqd1lzE09Mwa2n-RBBRGq2FpTLFeZFZzgEYWKcBH4d7qpR9c1CN8gMvDF2oRF5AMJePw7vknv0-K6FNJn7q-_-thpIFo/w400-h90/imagem%2003.png"/>
-</a><br/>
-
-<p>3. Digite a senha do usuário root do mysql (Normalmente é mesma senha do usuário root do Linux instalado. Caso não seja, peça ajuda ao seu administrador do servidor)</p>
-
-<!--Imagem 04###################-->
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoh2-QFhXbYajHnNtyNO-T5o2nJ8oCe5mLor-rS5_42mgNVvBCVVS0XIyODFqmP95nprQj7iF2OjMhVD1Dx96K6ZaeopvUKuViB9RKjlOubDh9gwV0aLCQjGTNy3KlY2ldhv2D-KUwtSvPrdMstr_vGKg9jbbBnLzBkBDxVBoNVnMPxDl2f3HOuoLoDJY/s626/Captura%20de%20tela%20de%202023-09-13%2012-42-57.png">
-    <img  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoh2-QFhXbYajHnNtyNO-T5o2nJ8oCe5mLor-rS5_42mgNVvBCVVS0XIyODFqmP95nprQj7iF2OjMhVD1Dx96K6ZaeopvUKuViB9RKjlOubDh9gwV0aLCQjGTNy3KlY2ldhv2D-KUwtSvPrdMstr_vGKg9jbbBnLzBkBDxVBoNVnMPxDl2f3HOuoLoDJY/s320/Captura%20de%20tela%20de%202023-09-13%2012-42-57.png" />
-</a><br>
-
-<p>4. Para visualizar todos os bancos de dados após logar no MYSQL,&nbsp; digite:&nbsp;</p>
-
-<!-- Segundo código #############-->
-<pre class="caixa-de-codigo">
-    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-    <p class="codigo">show databases;</p>
-</pre><br>
-
-<!--Imagem 05 ###################-->
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijb0TJDSg3yTbppOazV9ZARaqXsxcBvsujjndiFPEpE1-E0N0-c5msq2zq3h9wBSn8qH665H5mfnN2meBy3WnYgtHu9MZVrp0EJOXxY_eHZBrLS_l9XUq2xQxauTgovFTEeVA2XApih2qq79M2qsiDps90Vtc77-zVE7SNLoXrJG7HvV0d1Lz6m3V_R9U/s734/imagem%2004.png" target="_blank">
-    <img  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijb0TJDSg3yTbppOazV9ZARaqXsxcBvsujjndiFPEpE1-E0N0-c5msq2zq3h9wBSn8qH665H5mfnN2meBy3WnYgtHu9MZVrp0EJOXxY_eHZBrLS_l9XUq2xQxauTgovFTEeVA2XApih2qq79M2qsiDps90Vtc77-zVE7SNLoXrJG7HvV0d1Lz6m3V_R9U/w400-h133/imagem%2004.png"/>
-</a>
-<p>4. Anote o nome do seu Banco de Dados Koha e Digite 'Exit' e aperte 'Enter' para sair</p>
-
-
-<p class="passos"> Passo 2 - Obtendo a senha do banco de dados Koha</p>
-<p>1. Ainda dentro do terminal digite:</p>
-
-<!-- Terceiro código #############-->
-<pre class="caixa-de-codigo">
-    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-    <p class="codigo">sudo koha-passwd bancox</p>
-</pre><br>
-
-<div class="obs">
-Obs: Lembre-se de substuir 'bancox' pelo nome do seu banco  <br>
-</div>
-<p>2. Anote a senha descoberta</p>
-
-<!--Imagem 05 ###################-->
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilATOr_uhg0T4Xf4VGnEFCanBgaj8k12pyagae86s9xJYqyk1g5WB6BFHVdq6ovDosRGx9FLFJYmQdxfhzRLVxM_H-C7aXa3cwdwZzpc1_f3GByb7jsBNUOYmPMBl-fWkqHgkDoTrYKdGad7lD5wm08zqmAIrIfLbt2jpxK0hqe_iObTQ0_PeFADvqnCY/s736/imagem%2005.png" target="_blank">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilATOr_uhg0T4Xf4VGnEFCanBgaj8k12pyagae86s9xJYqyk1g5WB6BFHVdq6ovDosRGx9FLFJYmQdxfhzRLVxM_H-C7aXa3cwdwZzpc1_f3GByb7jsBNUOYmPMBl-fWkqHgkDoTrYKdGad7lD5wm08zqmAIrIfLbt2jpxK0hqe_iObTQ0_PeFADvqnCY/w400-h50/imagem%2005.png"/>
-</a>
-
-<p class="passos">Passo 3 - Crie uma pasta para salvar os arquivos de Backup que serão gerados (os Dumps)</p>
-
-<p>Neste exemplo, criaremos uma pasta 'Dumps Koha' no diretório 'Documentos' no servidor linux</p>
-
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9XBW03Jf8_bHH85Cz-1CQhIkHYiLWnnu5rVr18_zZ6ZICGJttuUkapr7R2P78K3ZZZWLlg1xR2533uyNHsrlvVNg07Epb6dcFxjwUT-9KULa1QyAhCcLX34C85gfzp27rnGGBTY4xUA2gq9RugoCDUp0hlrnptdkw2Tqx4JwfhJ7Auj38Bbcp9iuhwxM/s1243/imagem%2006.png" target="_blank">
-        <img  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9XBW03Jf8_bHH85Cz-1CQhIkHYiLWnnu5rVr18_zZ6ZICGJttuUkapr7R2P78K3ZZZWLlg1xR2533uyNHsrlvVNg07Epb6dcFxjwUT-9KULa1QyAhCcLX34C85gfzp27rnGGBTY4xUA2gq9RugoCDUp0hlrnptdkw2Tqx4JwfhJ7Auj38Bbcp9iuhwxM/w400-h85/imagem%2006.png" />
-</a>
-
-<p class="passos">Passo 4 - Faça o Backup com ususário root mysql na pasta criada</p>
-<p>1. Acesse a pasta criada e em qualquer lugar dela clique com botão direito do mouse e selecione abrir no Terminal, e digite:</p>
-<!-- quarto código ################-->
-<pre class="caixa-de-codigo">
-    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-    <p class="codigo">sudo mysqldump -u root -p koha_library > koha_library-$(date +%d-%m-%Y).sql</p>
-</pre>
-
-<p>Será requisitado a senha do usuário root do linux e do mysql, é digitar</p>
-
-<div class="obs">
-    Obs: <br>
-    -Em regra, quando o servidor de bando dados é instalado no processo de instação do koha, a seha root do mysql fica sendo a mesma do usuário root do linux. <br>
-    -Caso não consiga inserir a senha root do mysql peça ajuda ao administrador do servidor. <br>
-    -Lembre-se de substituir 'koha_library' pelo nome do seu bando de dados Koha <br>
-</div><br>
-
-<div class="obs">
-    <p>Entenda este comando:</p>
-        <ul type="cicle">
-            <li>mysqldump = Comando para fazer backup do MySQL.</li>
-            <li>-u root = Indica que o usuário root do mysql está solicitando o Backup do banco de dados Koha.</li>
-            <li>-p = Indica que será requisita da senha do usuário root.</li>
-            <li>koha_library = É nome do seu banco de dados Koha.</li>
-            <li>$(data +%d-%m-%Y-%) = Carimbo de hora; data, mês, ano.</li>
+        <!--Lita ####################-->
+        <ul  type="cicle">
+        <li>Nome de usuário do banco de dados Koha</li>
+        <li>Senha do banco de dados Koha</li>
+        <li>Criar uma pasta para salvar os arquivos Dump gerados</li>
         </ul>
-        <p>Se a senha do seu banco de dados tiver caracteres especiais como aspas duplas("), ponto e vírgula(;) etc., você deverá colocar a senha dentro de aspas simples&nbsp; para evitar que o shell interprete os caracteres especiais erroneamente.</p>
-</div><br>
+        <!--Div atenção ###################-->
+        <div class="atencao"> 
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJqJhf2VhUVnFuqDyB-WdysUaezp9IJuG87ixNrQ3g8BqfMRMD3_yfWn_PfnG_Vw69mx43u5b0EkALRsUL9Xife0_a_Ajv2YC3oJ1Jqxo1_cuKnCTlY9Plg4puQHCA9rYxg-OHn9MCCesx6Ww7kTqrdGxHGPAqCuKBG-dou9LrhkYltgz1kaKNg5kW0lk/s1280/attention-98643_1280.webp" target="_blank">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJqJhf2VhUVnFuqDyB-WdysUaezp9IJuG87ixNrQ3g8BqfMRMD3_yfWn_PfnG_Vw69mx43u5b0EkALRsUL9Xife0_a_Ajv2YC3oJ1Jqxo1_cuKnCTlY9Plg4puQHCA9rYxg-OHn9MCCesx6Ww7kTqrdGxHGPAqCuKBG-dou9LrhkYltgz1kaKNg5kW0lk/w177-h190/attention-98643_1280.webp"/>
+        </a>
+        
+        <p>Para realizar este procedimento você deve ter a senha do usuário root do sistema e ter permissão para editar as pastas do Koha. Se tiver alguma dificuldade sobre isso, peça ajuda ao administrador do sistema.</p>
+        <p>Sugestão de vídeos sobre permissões no linux</p>
+        <p><a href="https://www.youtube.com/watch?v=C-X_HmtGqPk" target="_blank">Permissões de acesso a arquivos e pastas pelo terminal Linux</a></p>
+        <p><a href="https://www.youtube.com/watch?v=nogVVjeeXLg&amp;t=771s" target="_blank">Comando chmod - Alterar permissões pelo terminal – Linux</a></p>
+        </div>
 
-<p class="passos">Passo 5 - Faça o Backup completo com a senha do bando de dados Koha na pasta criada.</p>
-<p>1. Acesse a pasta criada e em qualquer lugar dela clique com botão direito do mouse e selecione abrir no Terminal, e digite:</p>
+        <p class="passos">Passo 1- Encontrar o nome de usuário do seu Banco de dados Koha</p>
+        <p>O nome de usuário dos seu banco de dados koha (instância) tem a seguinte nomenclatura 'Koha_nome do seu bando de dados'.</p>
+        <p>Exemplos: Koha_library, Koha_biblio, Koha_comunit etc.</p>
+        <p>Para encontrar acesse a interface administrativa do Koha e clique em 'Sobre o Koha'</p>
 
-<!-- Quarto código ################-->
-<pre class="caixa-de-codigo">
-    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-    <p class="codigo">sudo mysqldump -ukoha_xxxxxxxx -pkoha_passwd koha_xxxxxxxx &gt; koha_xxxxxxxx.sql</p>
-</pre><br>
+        <!--Imagem 01###################-->
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8-2zZ3D0rdnpt8Pgg1vjy-kJ6bLw2YWJ-39XlgMtaT2gLt1NnagAxgkWid_vXBzUv1hDPefwq7JUrd42o72IGnwPxFsHsq6jN3IkhQ7nU-X9Z0hArLgD3hy0bW4qz3UBV1kaA5fdTPFtbLIv3Z5RdvpKPBarjuOUNLe4PIxnjPSrqYy0ab1-JeQP1DsM/s699/imagem%2001.png" target="_blank">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8-2zZ3D0rdnpt8Pgg1vjy-kJ6bLw2YWJ-39XlgMtaT2gLt1NnagAxgkWid_vXBzUv1hDPefwq7JUrd42o72IGnwPxFsHsq6jN3IkhQ7nU-X9Z0hArLgD3hy0bW4qz3UBV1kaA5fdTPFtbLIv3Z5RdvpKPBarjuOUNLe4PIxnjPSrqYy0ab1-JeQP1DsM/w400-h299/imagem%2001.png"/>
+        </a><br>
+        
+        <p>Anote o nome do seu usuário do Bando de Dados Koha conforme exemplo:</p>
+        <p>Memcached Servidores: 127.0.0.1:11211 | <b style="background-color:#32CD32">Namespace: koha_XXXXX</b> | Situação: em execução. | Configuração lida de: koha-conf.xml<p>
+        <br/>
 
-<div class="obs">
-    Obs: <br>
-    Substitua xxxxxxx pelo nome do seu banco de dados <br>
-    O comando supra fará o Backup sem data.<br>
-    Caso queira datar os backups para ter melhor controle, aplique o seguinte: <br>
-</div>
+        <!--Imagem 02###################-->
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh39S7pp8oumTMIz08p-MbaK20jy_71LHo8SMrGoSSBRfa_MVjs26gRHEvxnr3lHkFndGwQACTSi4vgPuZf_gOIJ6ongquE_2j6Avsb1QpqlKCqpsZs-TLD1MDC6h4aBF4x8EjraLlWu9K3kQXq6kWkyvX0HxWgIsVZK-txeWPVqNe1BQWotqBvZwjKcP4/s1276/imagem%2002.png" target="_blank">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh39S7pp8oumTMIz08p-MbaK20jy_71LHo8SMrGoSSBRfa_MVjs26gRHEvxnr3lHkFndGwQACTSi4vgPuZf_gOIJ6ongquE_2j6Avsb1QpqlKCqpsZs-TLD1MDC6h4aBF4x8EjraLlWu9K3kQXq6kWkyvX0HxWgIsVZK-txeWPVqNe1BQWotqBvZwjKcP4/w640-h82/imagem%2002.png"/>
+        </a>
+        <p>Outra forma de visualizar o nome de usuário da sua instância é aplicando comandos no Terminal Linux conforme a seguir:<br />
+        <p> 1. Abra o terminal linux e digite </p>
 
-<!-- Quinto código ################-->
-<pre class="caixa-de-codigo">
-    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-    <p class="codigo">sudo mysqldump -ukoha_xxxxxxxx -pkoha_passwd koha_xxxxxxxx &gt; koha_xxxxxxxx$(date +%d-%m-%Y).sql</p>
-</pre><br>
+        <!-- Primeiro código #############-->
+        <pre class="caixa-de-codigo">
+            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+            <p class="codigo">sudo mysql -u root -p</p>
+        </pre>
 
-<p>Exemplos:</p>
+        <p>2. Digite a senha do usuário root do linux</p>
 
-<!-- Sexto código ################-->
-<pre class="caixa-de-codigo">
-    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-    <p class="codigo">sudo mysqldump -u root -p'Zaz1jW";#DKYGW&amp;' koha_library &gt; koha_redibifma-$(date +%d-%m-%Y).sql</p>
-</pre><br>
+        <!--Imagem 03###################-->
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ1XpCCZLCyF2Z39NQBq7dkbCBzz-tUmJaCohUq2FsiL94xqHBcWU9sqdeRrR261ex8L5S-niAzGMnchGNN0C_xioQVuSVY2gVqd1lzE09Mwa2n-RBBRGq2FpTLFeZFZzgEYWKcBH4d7qpR9c1CN8gMvDF2oRF5AMJePw7vknv0-K6FNJn7q-_-thpIFo/s729/imagem%2003.png" target="_blank">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ1XpCCZLCyF2Z39NQBq7dkbCBzz-tUmJaCohUq2FsiL94xqHBcWU9sqdeRrR261ex8L5S-niAzGMnchGNN0C_xioQVuSVY2gVqd1lzE09Mwa2n-RBBRGq2FpTLFeZFZzgEYWKcBH4d7qpR9c1CN8gMvDF2oRF5AMJePw7vknv0-K6FNJn7q-_-thpIFo/w400-h90/imagem%2003.png"/>
+        </a><br/>
 
-<!-- Sétimo código ################-->
-<pre class="caixa-de-codigo">
-    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-    <p class="codigo">sudo mysqldump -u koha_library -p'Zaz1jW";#DKYGW&amp;' koha_library &gt; koha_redibifma-$(date +%d-%m-%Y).sql</p>
-</pre><br>
+        <p>3. Digite a senha do usuário root do mysql (Normalmente é mesma senha do usuário root do Linux instalado. Caso não seja, peça ajuda ao seu administrador do servidor)</p>
 
-<div class="obs">
-    <p>Entenda este comando:</p>
-        <ul type="cicle">
-            <li>mysqldump = Comando para fazer backup do MySQL.</li>
-            <li>-u ukoha_xxxxxxxx = Nome de usuário do banco de dados Koha para qual o comando será executado (composto por Koha_ mais o nome do seu bando de dados.</li>
-            <li>-p pkoha_passwd = Senha do seu banco de xxxxxxxx.</li>
-            <li>xxxxxxxx = Nome do seu banco de dados Koha.</li>
-            <li>$(data +%d-%m-%Y-%) = Carimbo de hora; data, mês, ano.</li>
+        <!--Imagem 04###################-->
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoh2-QFhXbYajHnNtyNO-T5o2nJ8oCe5mLor-rS5_42mgNVvBCVVS0XIyODFqmP95nprQj7iF2OjMhVD1Dx96K6ZaeopvUKuViB9RKjlOubDh9gwV0aLCQjGTNy3KlY2ldhv2D-KUwtSvPrdMstr_vGKg9jbbBnLzBkBDxVBoNVnMPxDl2f3HOuoLoDJY/s626/Captura%20de%20tela%20de%202023-09-13%2012-42-57.png">
+            <img  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoh2-QFhXbYajHnNtyNO-T5o2nJ8oCe5mLor-rS5_42mgNVvBCVVS0XIyODFqmP95nprQj7iF2OjMhVD1Dx96K6ZaeopvUKuViB9RKjlOubDh9gwV0aLCQjGTNy3KlY2ldhv2D-KUwtSvPrdMstr_vGKg9jbbBnLzBkBDxVBoNVnMPxDl2f3HOuoLoDJY/s320/Captura%20de%20tela%20de%202023-09-13%2012-42-57.png" />
+        </a><br>
+
+        <p>4. Para visualizar todos os bancos de dados após logar no MYSQL,&nbsp; digite:&nbsp;</p>
+
+        <!-- Segundo código #############-->
+        <pre class="caixa-de-codigo">
+            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+            <p class="codigo">show databases;</p>
+        </pre><br>
+
+        <!--Imagem 05 ###################-->
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijb0TJDSg3yTbppOazV9ZARaqXsxcBvsujjndiFPEpE1-E0N0-c5msq2zq3h9wBSn8qH665H5mfnN2meBy3WnYgtHu9MZVrp0EJOXxY_eHZBrLS_l9XUq2xQxauTgovFTEeVA2XApih2qq79M2qsiDps90Vtc77-zVE7SNLoXrJG7HvV0d1Lz6m3V_R9U/s734/imagem%2004.png" target="_blank">
+            <img  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijb0TJDSg3yTbppOazV9ZARaqXsxcBvsujjndiFPEpE1-E0N0-c5msq2zq3h9wBSn8qH665H5mfnN2meBy3WnYgtHu9MZVrp0EJOXxY_eHZBrLS_l9XUq2xQxauTgovFTEeVA2XApih2qq79M2qsiDps90Vtc77-zVE7SNLoXrJG7HvV0d1Lz6m3V_R9U/w400-h133/imagem%2004.png"/>
+        </a>
+        <p>4. Anote o nome do seu Banco de Dados Koha e Digite 'Exit' e aperte 'Enter' para sair</p>
+
+
+        <p class="passos"> Passo 2 - Obtendo a senha do banco de dados Koha</p>
+        <p>1. Ainda dentro do terminal digite:</p>
+
+        <!-- Terceiro código #############-->
+        <pre class="caixa-de-codigo">
+            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+            <p class="codigo">sudo koha-passwd bancox</p>
+        </pre><br>
+
+        <div class="obs">
+        Obs: Lembre-se de substuir 'bancox' pelo nome do seu banco  <br>
+        </div>
+        <p>2. Anote a senha descoberta</p>
+
+        <!--Imagem 05 ###################-->
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilATOr_uhg0T4Xf4VGnEFCanBgaj8k12pyagae86s9xJYqyk1g5WB6BFHVdq6ovDosRGx9FLFJYmQdxfhzRLVxM_H-C7aXa3cwdwZzpc1_f3GByb7jsBNUOYmPMBl-fWkqHgkDoTrYKdGad7lD5wm08zqmAIrIfLbt2jpxK0hqe_iObTQ0_PeFADvqnCY/s736/imagem%2005.png" target="_blank">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilATOr_uhg0T4Xf4VGnEFCanBgaj8k12pyagae86s9xJYqyk1g5WB6BFHVdq6ovDosRGx9FLFJYmQdxfhzRLVxM_H-C7aXa3cwdwZzpc1_f3GByb7jsBNUOYmPMBl-fWkqHgkDoTrYKdGad7lD5wm08zqmAIrIfLbt2jpxK0hqe_iObTQ0_PeFADvqnCY/w400-h50/imagem%2005.png"/>
+        </a>
+
+        <p class="passos">Passo 3 - Crie uma pasta para salvar os arquivos de Backup que serão gerados (os Dumps)</p>
+
+        <p>Neste exemplo, criaremos uma pasta 'Dumps Koha' no diretório 'Documentos' no servidor linux</p>
+
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9XBW03Jf8_bHH85Cz-1CQhIkHYiLWnnu5rVr18_zZ6ZICGJttuUkapr7R2P78K3ZZZWLlg1xR2533uyNHsrlvVNg07Epb6dcFxjwUT-9KULa1QyAhCcLX34C85gfzp27rnGGBTY4xUA2gq9RugoCDUp0hlrnptdkw2Tqx4JwfhJ7Auj38Bbcp9iuhwxM/s1243/imagem%2006.png" target="_blank">
+                <img  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9XBW03Jf8_bHH85Cz-1CQhIkHYiLWnnu5rVr18_zZ6ZICGJttuUkapr7R2P78K3ZZZWLlg1xR2533uyNHsrlvVNg07Epb6dcFxjwUT-9KULa1QyAhCcLX34C85gfzp27rnGGBTY4xUA2gq9RugoCDUp0hlrnptdkw2Tqx4JwfhJ7Auj38Bbcp9iuhwxM/w400-h85/imagem%2006.png" />
+        </a>
+
+        <p class="passos">Passo 4 - Faça o Backup com ususário root mysql na pasta criada</p>
+        <p>1. Acesse a pasta criada e em qualquer lugar dela clique com botão direito do mouse e selecione abrir no Terminal, e digite:</p>
+        <!-- quarto código ################-->
+        <pre class="caixa-de-codigo">
+            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+            <p class="codigo">sudo mysqldump -u root -p koha_library > koha_library-$(date +%d-%m-%Y).sql</p>
+        </pre>
+
+        <p>Será requisitado a senha do usuário root do linux e do mysql, é digitar</p>
+
+        <div class="obs">
+            <p>Obs:</p>
+            <ul type="cicle">
+                <li>Em regra, quando o servidor de bando dados é instalado no processo de instação do koha, a seha root do mysql fica sendo a mesma do usuário root do linux.</li>
+                <li>Caso não consiga inserir a senha root do mysql peça ajuda ao administrador do servidor.</li>
+                <li>Lembre-se de substituir 'koha_library' pelo nome do seu bando de dados Koha</li>
+            </ul>
+        </div><br>
+
+        <div class="obs">
+            <p>Entenda este comando:</p>
+                <ul type="cicle">
+                    <li>mysqldump = Comando para fazer backup do MySQL.</li>
+                    <li>-u root = Indica que o usuário root do mysql está solicitando o Backup do banco de dados Koha.</li>
+                    <li>-p = Indica que será requisita da senha do usuário root.</li>
+                    <li>koha_library = É nome do seu banco de dados Koha.</li>
+                    <li>$(data +%d-%m-%Y-%) = Carimbo de hora; data, mês, ano.</li>
+                </ul>
+                <p>Se a senha do seu banco de dados tiver caracteres especiais como aspas duplas("), ponto e vírgula(;) etc., você deverá colocar a senha dentro de aspas simples&nbsp; para evitar que o shell interprete os caracteres especiais erroneamente.</p>
+        </div><br>
+
+        <p class="passos">Passo 5 - Faça o Backup completo com a senha do bando de dados Koha na pasta criada.</p>
+        <p>1. Acesse a pasta criada e em qualquer lugar dela clique com botão direito do mouse e selecione abrir no Terminal, e digite:</p>
+
+        <!-- Quarto código ################-->
+        <pre class="caixa-de-codigo">
+            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+            <p class="codigo">sudo mysqldump -ukoha_xxxxxxxx -pkoha_passwd koha_xxxxxxxx &gt; koha_xxxxxxxx.sql</p>
+        </pre><br>
+
+        <div class="obs">
+            <p>Obs:</p>
+            <ul type="cicle">
+            <li>Substitua xxxxxxx pelo nome do seu banco de dados</li>
+            <li>O comando supra fará o Backup sem data.</li>
+            <li>Caso queira datar os backups para ter melhor controle, aplique o seguinte:</li>
         </ul>
-        <p>Se a senha do seu banco de dados tiver caracteres especiais como aspas duplas("), ponto e vírgula(;) etc., você deverá colocar a senha dentro de aspas simples&nbsp; para evitar que o shell interprete os caracteres especiais erroneamente.</p>
-</div><br>
+        </div>
 
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIIvnZNIOT2mb6Axhy-t5eh1sl5vQrzpZM8Mul7ISruFmi_mxqz6eoN2lYBdrPinluc0WqQYri_Rjs_coEwnixRIDmHv4yP1eXcy6SG_jTwsnSWLtc0qiWBsgGxh_gadpKnKb_U9ziXMm3ZX07FcVivsNCFhdMPZQK_daDpl9FBtrYo5Y9TwR8-svRYGs/s1112/imagem%2008.png" target="_blank">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIIvnZNIOT2mb6Axhy-t5eh1sl5vQrzpZM8Mul7ISruFmi_mxqz6eoN2lYBdrPinluc0WqQYri_Rjs_coEwnixRIDmHv4yP1eXcy6SG_jTwsnSWLtc0qiWBsgGxh_gadpKnKb_U9ziXMm3ZX07FcVivsNCFhdMPZQK_daDpl9FBtrYo5Y9TwR8-svRYGs/w640-h104/imagem%2008.png"/>
-</a><br>
-<hr> <!-- linha horizontal -->
+        <!-- Quinto código ################-->
+        <pre class="caixa-de-codigo">
+            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+            <p class="codigo">sudo mysqldump -ukoha_xxxxxxxx -pkoha_passwd koha_xxxxxxxx &gt; koha_xxxxxxxx$(date +%d-%m-%Y).sql</p>
+        </pre><br>
 
-<div class="rodape"> <!-- Final div corpo ###################################################################-->
-    <h2>Outros tutoriais relacionados:</h2>
-        <p><a href="https://www.youtube.com/watch?v=gLcZWEAW6fA&t=199s" target="_blank">Backup e alternativas do Koha: Faça backup do Koha antes da atualização da versão</a></p>
-        <p><a href="http://kohageek.blogspot.com/2017/04/backup-with-time-stamp-and-automatic-delete-old-files.html" target="_blank">Backup com registro de data e hora e exclusão automática de arquivos antigos</a></p>
-        <p><b>Se você tiver dificuldades, deixe um comentário que responderei assim que possível! &#128512</b></p>
-</div>
+        <p>Exemplos:</p>
+
+        <!-- Sexto código ################-->
+        <pre class="caixa-de-codigo">
+            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+            <p class="codigo">sudo mysqldump -u root -p'Zaz1jW";#DKYGW&amp;' koha_library &gt; koha_redibifma-$(date +%d-%m-%Y).sql</p>
+        </pre><br>
+
+        <!-- Sétimo código ################-->
+        <pre class="caixa-de-codigo">
+            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+            <p class="codigo">sudo mysqldump -u koha_library -p'Zaz1jW";#DKYGW&amp;' koha_library &gt; koha_redibifma-$(date +%d-%m-%Y).sql</p>
+        </pre><br>
+
+        <div class="obs">
+            <p>Entenda este comando:</p>
+                <ul type="cicle">
+                    <li>mysqldump = Comando para fazer backup do MySQL.</li>
+                    <li>-u ukoha_xxxxxxxx = Nome de usuário do banco de dados Koha para qual o comando será executado (composto por Koha_ mais o nome do seu bando de dados.</li>
+                    <li>-p pkoha_passwd = Senha do seu banco de xxxxxxxx.</li>
+                    <li>xxxxxxxx = Nome do seu banco de dados Koha.</li>
+                    <li>$(data +%d-%m-%Y-%) = Carimbo de hora; data, mês, ano.</li>
+                </ul>
+                <p>Se a senha do seu banco de dados tiver caracteres especiais como aspas duplas("), ponto e vírgula(;) etc., você deverá colocar a senha dentro de aspas simples&nbsp; para evitar que o shell interprete os caracteres especiais erroneamente.</p>
+        </div><br>
+        <!-- Final div corpo ###################################################################-->
+
+        <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIIvnZNIOT2mb6Axhy-t5eh1sl5vQrzpZM8Mul7ISruFmi_mxqz6eoN2lYBdrPinluc0WqQYri_Rjs_coEwnixRIDmHv4yP1eXcy6SG_jTwsnSWLtc0qiWBsgGxh_gadpKnKb_U9ziXMm3ZX07FcVivsNCFhdMPZQK_daDpl9FBtrYo5Y9TwR8-svRYGs/s1112/imagem%2008.png" target="_blank">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIIvnZNIOT2mb6Axhy-t5eh1sl5vQrzpZM8Mul7ISruFmi_mxqz6eoN2lYBdrPinluc0WqQYri_Rjs_coEwnixRIDmHv4yP1eXcy6SG_jTwsnSWLtc0qiWBsgGxh_gadpKnKb_U9ziXMm3ZX07FcVivsNCFhdMPZQK_daDpl9FBtrYo5Y9TwR8-svRYGs/w640-h104/imagem%2008.png"/>
+        </a><br>
+    </div>
+    <hr> <!-- linha horizontal -->
+
+    <div class="rodape"> 
+        <h2>Outros tutoriais relacionados:</h2>
+            <p><a href="https://www.youtube.com/watch?v=gLcZWEAW6fA&t=199s" target="_blank">Backup e alternativas do Koha: Faça backup do Koha antes da atualização da versão</a></p>
+            <p><a href="http://kohageek.blogspot.com/2017/04/backup-with-time-stamp-and-automatic-delete-old-files.html" target="_blank">Backup com registro de data e hora e exclusão automática de arquivos antigos</a></p>
+            <p><b>Se você tiver dificuldades, deixe um comentário que responderei assim que possível! &#128512</b></p>
+    </div>
 
 
 
-<!-- Função JavaScript ######################################################-->
-<script> 
-    function copyCode(button) {  var codeElement = button.nextElementSibling; var codeToCopy = codeElement.textContent;       var tempTextArea = document.createElement('textarea');  tempTextArea.value = codeToCopy; document.body.appendChild(tempTextArea);   tempTextArea.select(); document.execCommand('copy'); document.body.removeChild(tempTextArea); button.textContent = button.getAttribute('data-label-copied'); button.classList.add('copied'); setTimeout(function() { button.textContent = button.getAttribute('data-label-copy');  button.classList.remove('copied'); }, 2000); } window.onload = function() { var button = document.querySelector(".butão-copiar");  button.onclick = function() {   copyCode(button);   };  }; 
-</script>
+    <!-- Função JavaScript ######################################################-->
+    <script> 
+        function copyCode(button) {  var codeElement = button.nextElementSibling; var codeToCopy = codeElement.textContent;       var tempTextArea = document.createElement('textarea');  tempTextArea.value = codeToCopy; document.body.appendChild(tempTextArea);   tempTextArea.select(); document.execCommand('copy'); document.body.removeChild(tempTextArea); button.textContent = button.getAttribute('data-label-copied'); button.classList.add('copied'); setTimeout(function() { button.textContent = button.getAttribute('data-label-copy');  button.classList.remove('copied'); }, 2000); } window.onload = function() { var button = document.querySelector(".butão-copiar");  button.onclick = function() {   copyCode(button);   };  }; 
+    </script>
 </body>
 </html>
