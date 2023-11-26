@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserindo logotipo no opac</title>
+    <link rel="stylesheet" href="">  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="corpo">
+    <!--Tabela da versão do koha e descrição do tutorial ou postagem -->
+<table id="versao"> 
+    <tr>
+      <th>Versão do Koha:</th>
+      <td>22.11.07 em..</td>
+    </tr>
+    <tr>
+      <th>Sistema Operacional:</th>
+      <td>Ubuntu (este tutorial pode ser aplicado todos os SO derivados do Debian e Ubuntu)</td>
+    </tr>
+    <tr>
+      <th>Resumo</th>
+      <td>Neste tutorial você aprenderá realizar o Backup do Banco de Dados do Koha pelo Terminal Linux</td>
+    </tr>
+  </table>
+  <br>
+<hr> <!-- Linha horizontal  #############################-->
+
+<p>Acesse StaffLoginInstructions - Mostrar o seguinte HTML na página de login da interface da equipe e&nbsp; “Clique para editar”</p>
+
+<!--Imagem 01 ####################-->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhJJkLcfuo2yvyhqvYlMMAbHtIGS2hgRwlp4DX3rAZsFYa-uZ-B7MJXgaXzcHwPEnoPMOmdlAJ-76GsbSh8eFiMMorpqGqe01BZDiyMNltFbBlRCUOQ6W8OBCN7BmaTQDfZTIHp99faXaUM-cHX5klr_4oFohD0ddGDNuFyh1KIcJMVB8zdEil3UFr8_Y/s1084/imagem%2001.png" target="_blank">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhJJkLcfuo2yvyhqvYlMMAbHtIGS2hgRwlp4DX3rAZsFYa-uZ-B7MJXgaXzcHwPEnoPMOmdlAJ-76GsbSh8eFiMMorpqGqe01BZDiyMNltFbBlRCUOQ6W8OBCN7BmaTQDfZTIHp99faXaUM-cHX5klr_4oFohD0ddGDNuFyh1KIcJMVB8zdEil3UFr8_Y/w640-h32/imagem%2001.png"/>
+</a>
+
+<h2>Apresentarei duas formas de inserir uma logo ou imagem na interface de login da equipe</h2>
+<h3>1ª Usando imagem da internet</h3>
+<p>Se for usar uma imagem da internet, coloque o endereço dela dentro da tag &lt;img&gt; conforme a seguir.</p>
+<p class="passos">Passo 1 - Inicialmente faremos uma pesquisa no ‘Google imagens’; (pode ser outra plataforma) por ‘logo’ (ou a imagem que você deseja inserir), em seguida é só copiar o endereço da imagem conforme abaixo:</p>
+
+<!--Imagem 02 ####################-->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5CcjqfhGs4ShqyMKLSoVgyuq4RLHB06bbFhL-N5NaTdgCMjV081EtLZjmk-slcNa4loztNQzFlzzfoiexq9WfGGM9K5R7qnUFkc4CGM5x6PVmBh2c46VV48OXSuv_VV_fAKW5nzjfMkeCrkPsLSHo7h3YMSgtS0mEPbRu5EWW9rgPTYca2vpQiGKzFhM/s1430/imagem%2002.png" target="_blank">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5CcjqfhGs4ShqyMKLSoVgyuq4RLHB06bbFhL-N5NaTdgCMjV081EtLZjmk-slcNa4loztNQzFlzzfoiexq9WfGGM9K5R7qnUFkc4CGM5x6PVmBh2c46VV48OXSuv_VV_fAKW5nzjfMkeCrkPsLSHo7h3YMSgtS0mEPbRu5EWW9rgPTYca2vpQiGKzFhM/w640-h312/imagem%2002.png"/>
+</a>
+
+<p class="passos"> Passo 2 - Insira no Koha o endereço copiando na tag &lt;img&gt; conforme exemplo a seguir:</p>
+
+<!-- Primeiro código ################-->
+
+<pre class="caixa-de-codigo">
+<button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+<p class="codigo">&lt;img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbdFv0YZhaWVQNSV7BPtQ4Dowos7Pv5ILiLA&usqp=CAU"  alt="Exemplo logo" width= "100%" height="150"&gt;</p>
+</pre><br>
+
+<!--Entenda a tag img #################-->
+
+<div class="obs">
+<p>Entenda os atributos da tag &lt;img src="endereço da imagem" alt= “minha logo” width= "100%" height="150" &gt;</p>
+<p>src = este atributo é utilizado para definir o local de origem da imagem, que tanto pode ser uma pasta dentro do seu servidor ou um link externo na internet
+<br>alt = este atributo insere um texto alternativo para ser mostrado caso a imagem fique indisponível por qualquer motivo, seja por ter sido excluída ou renomeada no local de armazenamento
+<br>Width (largura) = usada para ajustar a largura da imagem
+<br>height (altura) = usada para ajustar a altura da imagem<br>
+</div><br>
+
+</div><br>
+
+<!--Imagem 03 ################-->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNpypbVloeDrWDwRMJfHILdgIExUm8cbNKH2qQpNTPadLG1PCyBjvTIwKOz-E14UKDuFKJ9YrcLxjLmzpJZ5G3T6cxh4ci_wrnIuJxMIq9p7SjNDjSKOpMiLkFSRXo74nTIcTN4L6_sEcYg6dvheligCNPUWI9jjlP5NdunzCU5UinHP9jjGpOyZKAafg/s1192/imagem%2003.png" target="_blank">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNpypbVloeDrWDwRMJfHILdgIExUm8cbNKH2qQpNTPadLG1PCyBjvTIwKOz-E14UKDuFKJ9YrcLxjLmzpJZ5G3T6cxh4ci_wrnIuJxMIq9p7SjNDjSKOpMiLkFSRXo74nTIcTN4L6_sEcYg6dvheligCNPUWI9jjlP5NdunzCU5UinHP9jjGpOyZKAafg/w640-h274/imagem%2003.png"/>
+</a><br />
+
+<p class="passos">Passo 3 - Salve as mudanças feitas. Clique em “Salvar todas staff_interface.pref preferências”</p>
+
+<!--Imagem 04 ################-->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiajMPWdb9bZZr3ikXVdG-ow1CNjN7IXsvN_HuCfC7zw-0yXHB1ftuCIqDpaTr8f5PA8TbZDUtSVAp10fDQBR3BENJZ_IwD_47jQGIy5Fx0jJYyh4rv7vwker7HOdl7IrX37WXfflLyCmxowG_xo4syxn-8_pBwrMD7gYMSL65OdUUIH8XPGe7NrwFZvcs/s358/imagem%2004.png" target="_blank">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiajMPWdb9bZZr3ikXVdG-ow1CNjN7IXsvN_HuCfC7zw-0yXHB1ftuCIqDpaTr8f5PA8TbZDUtSVAp10fDQBR3BENJZ_IwD_47jQGIy5Fx0jJYyh4rv7vwker7HOdl7IrX37WXfflLyCmxowG_xo4syxn-8_pBwrMD7gYMSL65OdUUIH8XPGe7NrwFZvcs/w640-h126/imagem%2004.png" />
+</a><br/>
+
+<h4>Resultado:</h4>
+
+<!--Imagem 04 ################# -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFCbnGJu8_Jm1DL4_OMBfEKJxp6wYi3wHSkWA8oBCdrTuk2zTdn7pI0NwFWxlCWV_IaLQvXae6eJWz07lKa8jDYn9OHGq72cwu6scqbAbyzC9Zp6FnyG3eD8U3ybw0ORcxruIkaww3PYeR10_gWCJ_zd1n0w2n05Ka40pq_0-BjQjOAejkUQPLs2IGSVY/s537/imagem%2005.png" target="_blank">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFCbnGJu8_Jm1DL4_OMBfEKJxp6wYi3wHSkWA8oBCdrTuk2zTdn7pI0NwFWxlCWV_IaLQvXae6eJWz07lKa8jDYn9OHGq72cwu6scqbAbyzC9Zp6FnyG3eD8U3ybw0ORcxruIkaww3PYeR10_gWCJ_zd1n0w2n05Ka40pq_0-BjQjOAejkUQPLs2IGSVY/w269-h400/imagem%2005.png"/>
+</a>
+
+<h3>2ª Usando imagem dentro do servidor</h3>
+<p>Passo 1 – Salve a logo ou imagem na pasta htdocs da intranet.&nbsp;</p>
+<p>Caminho no linux: <u>/usr/share/koha/intranet/htdocs</u></p>
+
+<!--Div atenção ###################-->
+
+
+<div class="atencao"> 
+
+<!--Imagem 05 ################# -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJqJhf2VhUVnFuqDyB-WdysUaezp9IJuG87ixNrQ3g8BqfMRMD3_yfWn_PfnG_Vw69mx43u5b0EkALRsUL9Xife0_a_Ajv2YC3oJ1Jqxo1_cuKnCTlY9Plg4puQHCA9rYxg-OHn9MCCesx6Ww7kTqrdGxHGPAqCuKBG-dou9LrhkYltgz1kaKNg5kW0lk/s1280/attention-98643_1280.webp" target="_blank">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJqJhf2VhUVnFuqDyB-WdysUaezp9IJuG87ixNrQ3g8BqfMRMD3_yfWn_PfnG_Vw69mx43u5b0EkALRsUL9Xife0_a_Ajv2YC3oJ1Jqxo1_cuKnCTlY9Plg4puQHCA9rYxg-OHn9MCCesx6Ww7kTqrdGxHGPAqCuKBG-dou9LrhkYltgz1kaKNg5kW0lk/w177-h190/attention-98643_1280.webp"/>
+</a>
+
+<p>Para realizar este procedimento você deve ter a senha do usuário root do sistema e ter permissão para editar as pastas do Koha. Se tiver alguma dificuldade sobre isso, peça ajuda ao administrador do sistema.</p>
+<p>Sugestão de vídeos sobre permissões no linux</p>
+<p><a href="https://www.youtube.com/watch?v=C-X_HmtGqPk" target="_blank">Permissões de acesso a arquivos e pastas pelo terminal Linux</a></p>
+<p><a href="https://www.youtube.com/watch?v=nogVVjeeXLg&amp;t=771s" target="_blank">Comando chmod - Alterar permissões pelo terminal – Linux</a></p>
+</div>
+
+<p>Encontre a pasta htdocs em /usr/share/koha/intranet/htdocs e salve seu arquivo nela</p>
+<!--Imagem 06 ############### -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKHXEDpj4_M084IHCeE3Ynh7hgGPjU6iU6X4eT4BOQr-MGjP28gjwz_M5DxBEAfRPsJ1POEpZd0XlTk49pY08VUcqeVeMq0AIdnOlGciWQqueUGmBED2TRx5td5A8Z3mwN3sYZYwe-gDoqzNuuXUXcslPsyMMt1pbOBzfL-UoixpzBjkGuJdh671OU5cM/s1233/imagem%2006.png">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKHXEDpj4_M084IHCeE3Ynh7hgGPjU6iU6X4eT4BOQr-MGjP28gjwz_M5DxBEAfRPsJ1POEpZd0XlTk49pY08VUcqeVeMq0AIdnOlGciWQqueUGmBED2TRx5td5A8Z3mwN3sYZYwe-gDoqzNuuXUXcslPsyMMt1pbOBzfL-UoixpzBjkGuJdh671OU5cM/w640-h162/imagem%2006.png" />
+</a>
+
+<p class="passos">Passo 2 - Insira no Koha o endereço copiando na tag &lt;img&gt; conforme exemplo a seguir:&nbsp;</p>
+
+<!-- Segundo código #############-->
+
+<pre class="caixa-de-codigo">
+<button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+<p class="codigo">&lt;img src="/Logo 02.png" alt="Logo 02" width= "100%" height="150"&gt;</p>
+</pre><br>
+
+<!--Imagem 07 ################### -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSwxxqO7GYZr0iEqpiZNoO3db6ZK48yAHdmiBTv1ZuRmi2B93WmECnlMS4HKWU2mGUxOot3ay5yOz1x4qM2w066vIin4xqCPFayMRIK2lHTAmnJQYqf8f6SU6rnH5fnt2cEj0se6mJtgBDCY25hJr6UVtoi22Jwbubf9FvIgVKQPrNkddb_UpnilAAzWg/s1192/imagem%2007.png">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSwxxqO7GYZr0iEqpiZNoO3db6ZK48yAHdmiBTv1ZuRmi2B93WmECnlMS4HKWU2mGUxOot3ay5yOz1x4qM2w066vIin4xqCPFayMRIK2lHTAmnJQYqf8f6SU6rnH5fnt2cEj0se6mJtgBDCY25hJr6UVtoi22Jwbubf9FvIgVKQPrNkddb_UpnilAAzWg/w640-h274/imagem%2007.png" />
+</a><br>
+
+<p class="passos">Passo 3 - Salve as mudanças feitas. Clique em “Salvar todas staff_interface.pref preferências”</p>
+
+<!--Imagem 08 ##################### -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGsf00yIFPpn30qHvlI2esEkDv5pT8wxKQOuBj9ItCeWaGgXWHu6M0j3hhP9LD-JuJ5E1hLKmmeB9TOwlk9ApfZ79_P53izRWlC-pzpQC8iIizCU1JCuaH-ithIJBr8XnvWM062suoHUY0kJ0W7TFm87uPjPkjXgY8uGFVGrrC45BIY5V5qNoS7HVNv0g/s358/imagem%2004.png" >
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGsf00yIFPpn30qHvlI2esEkDv5pT8wxKQOuBj9ItCeWaGgXWHu6M0j3hhP9LD-JuJ5E1hLKmmeB9TOwlk9ApfZ79_P53izRWlC-pzpQC8iIizCU1JCuaH-ithIJBr8XnvWM062suoHUY0kJ0W7TFm87uPjPkjXgY8uGFVGrrC45BIY5V5qNoS7HVNv0g/w640-h126/imagem%2004.png" />
+</a><br>
+
+<h4>Resultado</h4>
+
+<!--Imagem 08 ############################ -->
+
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrUgfxxyMWZE51sbxGAmQWropBx6IDwedHz3QxY3AAW_2_gTCp5t4MkQhNFkODzExTQ8HBuPNW3-urYGH0oaymzN6RdHr_Qd2ZmpREZ6OxxvjR02qecqzOhsOEguLn4l0SrM_Pt34Njq4mHiQIFJhcmfsKNmXZqVkcSUNpfzPYWMDPzFGFYD_rI2y7Lsg/s536/imagem%2009.png">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrUgfxxyMWZE51sbxGAmQWropBx6IDwedHz3QxY3AAW_2_gTCp5t4MkQhNFkODzExTQ8HBuPNW3-urYGH0oaymzN6RdHr_Qd2ZmpREZ6OxxvjR02qecqzOhsOEguLn4l0SrM_Pt34Njq4mHiQIFJhcmfsKNmXZqVkcSUNpfzPYWMDPzFGFYD_rI2y7Lsg/w274-h400/imagem%2009.png" />
+</a><br>
+<hr/>
+
+<!-- Rodapé########################-->
+<div class="rodape"> 
+<h3>Outros tutoriais relacionados:</h3>
+<p><a href="http://kohageek.blogspot.com/2021/01/display-logo-on-koha-staff-client-login-page.html" target="_blank">Exibir logotipo na página de login do cliente da equipe Koha</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=Fqk901kjd6Y" target="_blank">Como criar a página de login do Koha e alterar o logotipo</a></p>
+<p><b>Obs: se você tiver dificuldades, deixe um comentário que responderei assim que possível!</b></p>
+
+<!-- Função JavaScript ########################-->
+<script>function copyCode(button) { var codeElement = button.nextElementSibling; var codeToCopy = codeElement.textContent; var tempTextArea = document.createElement('textarea'); tempTextArea.value = codeToCopy; document.body.appendChild(tempTextArea); tempTextArea.select();  document.execCommand('copy');  document.body.removeChild(tempTextArea); button.textContent = button.getAttribute('data-label-copied'); button.classList.add('copied'); setTimeout(function() { button.textContent = button.getAttribute('data-label-copy'); button.classList.remove('copied'); },2000);  }</script>
+
+</div>
+
+</body>
+</html>

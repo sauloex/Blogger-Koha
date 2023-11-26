@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/* estilos para tabela versao */
+.corpo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+}
+
+#versao {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: bisque;
+    border-radius: 10px;  
+    overflow: hidden; 
+    color: #700000;
+        
+  }
+  /* border: 1px solid black; */
+  #versao th,td {
+    border-bottom: 1px solid black;
+    padding: 10px;
+    text-align: left;
+    
+  }
+  #versao th {
+    text-align: right;
+}
+#versao tr:hover {
+    background-color: #408540;
+    color: white;
+}
+
+ /* css para a lista */
+   
+   li {
+    margin: 10px 0;
+  }
+
+  .atencao {
+    background-color: #87CEFA;
+    border: 1px solid #000000;
+    padding: 5px;
+    border-radius: 5px;   
+  }
+  /* Css para div atencao */
+  .atencao img {
+    margin: 10px;
+    position: absolute;
+  }
+  .atencao p {
+    padding-left: 210px;
+  }
+
+  .passos {
+    font-weight:bold;
+     }
+  
+  /* Css para div código */
+  .caixa-de-codigo {
+  display: flex;
+  position: relative; 
+  width: auto;
+  background-color: #1C1C1C;
+  color: white;
+  border: 2px solid #408540;;
+  padding: 2px 5px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  }
+
+  .butão-copiar {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: #408540;
+  color: white; 
+  font-size: 10pt; 
+  font-weight: bold; 
+  padding: 5px 10px; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer;
+  }
+  .codigo {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12pt;
+  font-weight: bold;
+  padding-top: 14px;
+  }
+
+    /* Css para div OBS */
+  .obs {
+    color: #700000;
+    background-color: aquamarine;
+    padding: 5px;
+    border: 1px solid #000000;
+    border-radius: 5px;  
+  }
+   /* Css para div Rodapé */
+   .rodape {
+    background-color: antiquewhite;
+    padding: 10px;
+    border:  1px solid black;
+    border-radius: 5px;
+    
+   } 
