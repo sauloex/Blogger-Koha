@@ -52,6 +52,7 @@
   .atencao img {
     margin: 10px;
     position: absolute;
+    border: none;
   }
   .atencao p {
     padding-left: 210px;
@@ -59,6 +60,7 @@
 
   .passos {
     font-weight:bold;
+    background: linear-gradient(to right, #51af51, transparent);
      }
   
   /* Css para div código */
