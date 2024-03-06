@@ -12,6 +12,13 @@
   border-radius: 4px;  
 }
 
+.cabecalho {
+  font-weight: bolder;
+  font-size: 18pt; 
+  color: black;
+      
+}
+
 #versao {
     border-collapse: collapse;
     width: 100%;
@@ -21,6 +28,8 @@
     color: black;
         
   }
+
+
   /* border: 1px solid black; */
   #versao th,td {
     border-bottom: 1px solid black;
@@ -110,5 +119,23 @@
     padding: 10px;
     border:  1px solid black;
     border-radius: 5px;
-    
+   
    } 
+    /* Css para div Rodapé */
+   .versoes {
+    background-color: #f8f9fa;
+    color: #202122;
+    margin: 1em 0;
+    border: 1px solid #a2a9b1;
+    border-collapse: collapse;
+}
+    .versoes > * > tr > td {
+    border: 1px solid #a2a9b1;
+    padding: 0.2em 0.4em;
+}
+    .versoes > * > tr > th {
+    border: 1px solid #a2a9b1;
+    background-color: #eaecf0;
+    text-align: center;
+}
+</style>

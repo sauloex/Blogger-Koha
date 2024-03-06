@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pr-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versoes koha</title>
+    <link rel="stylesheet" href="estilo/style.css">
+</head>
+ 
+<body>
+     
+    <div class="corpo"> <!-- Div corpo da postagem -->
+        <p class="cabecalho">&#128736; Versionamento do Koha &#128736; </p>
+
+        <p class="passos">Cronograma de lançamento das versões</p>
+        
+            <p>Os lançamentos do Koha seguem um padrão regular baseado no calendário. As versões 'Estáveis' são lançadas a cada seis meses, sendo que por ano são lançadas duas versões estáveis. Já as versões de 'Manutenção', são lançadas todos os meses até findar o tempo de suporte da respectiva versão estável.</p>
+
+        <p class="passos">Versão Estável (novos recursos)</p>
+
+            <p>A versão estável de um software é uma versão que foi consubstancialmente desenvolvida e se apresenta livre de erros críticos. Esta versão apresenta sempre novos recursos e melhorias importantes, sendo testadas cuidadosamente para garantir a estabilidade geral do software.</p>
+
+            <p>O lançamento de uma versão estável normal do Koha deverá ser feito uma vez a cada seis meses, em maio (XX.05) e novembro (XX.11) todos os anos. Após o lançamento da versão estável, uma equipe de lançamento é eleita para o próximo ciclo de seis meses.</p> 
+
+            <p>O suporte de uma versão estável normal será mantido por período mínimo de 18 meses. Mais que que isso, vai depender de voluntários para compor a equipe de desenvolvimento da versão.</p>
+
+        <p><b>Versão Estável LTS</b></p>
+
+            <p>A Versão Estável LTS do Koha receberá um suporte estendido em termos de correções de bugs e  atualizações de segurança. Ou seja, o suporte terá um tempo mais longo do que as versões normais. A sigla "LTS" significa "Long-Term Support", que é mesmo em português a "Suporte de Longo Prazo".</p>
+
+            <P>A primeira vesão LTS do Koha foi lançada em novembro de 2022, a vesão 22.11. O suporte das versões LTS será mantido por 3,5 anos.</P>            
+
+           
+
+            Aqui estão alguns pontos-chave sobre versões LTS:
+
+            Suporte Prolongado:
+
+            As versões LTS oferecem um período de suporte mais longo em comparação com as versões regulares. Esse período pode variar, mas geralmente é de vários anos.
+            Durante esse tempo, a equipe de desenvolvimento se compromete a fornecer atualizações de segurança e correções de bugs para a versão LTS.
+            Estabilidade:
+
+            O foco principal das versões LTS é a estabilidade e confiabilidade. Elas são destinadas a usuários e organizações que priorizam a consistência e não desejam atualizar frequentemente para as versões mais recentes.
+            Indicadas para Ambientes de Produção:
+
+            As versões LTS são frequentemente recomendadas para ambientes de produção, onde é crucial manter a estabilidade e minimizar as mudanças no ambiente de software.
+            Atualizações Opcionais:
+
+            Enquanto as atualizações de segurança são fornecidas de forma contínua, as atualizações de recursos podem ser opcionais. Isso permite que as organizações escolham quando e como incorporar novos recursos sem interromper a estabilidade.
+            Exemplos Práticos:
+
+            Um exemplo comum de versões LTS é encontrado em sistemas operacionais, como o Ubuntu, que oferece versões LTS com suporte de cinco anos. Outros projetos e frameworks também adotam o modelo LTS para atender às necessidades de diferentes comunidades de usuários.
+            Em resumo, as versões LTS são uma opção para aqueles que valorizam a estabilidade a longo prazo e desejam minimizar as mudanças frequentes no ambiente de software. Essas versões proporcionam confiança e consistência, sendo particularmente úteis em ambientes críticos, como servidores e sistemas empresariais.
+
+        <p class="passos">Versão de manutenção (correção e bugs)</p>
+            <p>e uma nova versão de correção de bugs , que inclui muitas correções para bugs portados da versão de desenvolvimento upstream, é feita a cada mês durante este período.</p>
+
+            Uma versão de manutenção é uma atualização menor que geralmente se concentra na correção de bugs e na resolução de problemas de segurança.
+            Essas versões são lançadas após a versão estável e têm como objetivo manter a estabilidade e segurança do software.
+            As versões de manutenção geralmente têm um número de versão diferente da versão estável principal, indicando uma mudança incremental.
+            Elas são importantes para corrigir problemas identificados após o lançamento da versão estável e para garantir que os usuários tenham acesso a um software mais confiável.
+
+            Suponha que a versão estável de um software seja 2.0. Após o lançamento, alguns bugs são descobertos. Em vez de lançar uma nova versão completa, o desenvolvedor pode lançar uma versão de manutenção, como 2.0.1, para corrigir esses problemas específicos sem introduzir novos recursos importantes.
+
+            Em resumo, a versão estável é uma versão principal do software, enquanto as versões de manutenção são atualizações incrementais destinadas a corrigir problemas específicos sem introduzir grandes alterações no código. Essa prática ajuda a manter a estabilidade, confiabilidade e segurança do software ao longo do tempo.
+
+        <p class="passos">Numeração de versão</p>
+
+        <p>Desde o ano de 2016 a comunidade de desenvolvimento do Koha decidiu mudar os esquema de numeração das versões do software que antes era baseado em recursos para um esquema baseado no tempo, considerando o ano e mês de lançamento. A primeira versão nesse novo modelo foi a 16.05.
+        <p><b>Vamos entender</b></p>
+
+        <p>16.05</p>
+        <P>16 - O ano de lançamento. No caso, indica que o ano de lançamento da versão foi em 2016.</P>
+        <p>05 - O mês de lançamento. No caso, indica que o mês de lançamento da versão foi o 05 de 2016 (maio)</p>
+        <p>16.05.01</p>
+        <p>01 - O incremento de manutenção. Denota uma versão de 'correção de bug'. A introdução de patches para corrigir bugs apenas em recursos existentes, sem melhorias e sem novos recursos.</p>
+        <p>AAA - O incremento do banco de dados. Esse incremento é usado para rastrear o esquema do banco de dados.</p>
+        <p>16.05 → Presente</p>
+        <p>Pró: Você saberá facilmente a idade da versão que está usando.</p>
+        <p>Contra: Não há uma mudança óbvia no número da versão para indicar grandes mudanças nos recursos.</p>
+        
+        
+        
+        <table class="versoes">
+            <caption>
+            </caption>
+            <tbody>
+                <tr>
+                    <th><b>Ano/mês</b>
+                    </th>
+                    <th><b>Nun. Versão</b>
+                    </th>
+                    <th colspan="6"><b>Versões mantidas mais antigas</b>
+                    </th></tr>
+                    <tr>
+                    <td><i><b>    </b></i>
+                    </td>
+                    <td><i>Estável</i>
+                    </td>
+                    <td><i>Versão anterior 6 meses da estável</i>
+                    </td>
+                    <td><i>Versão anterior 12 meses da estável</i>
+                    </td>
+                    <td colspan="4"><i>Versão anterior 18 meses da estável</i>
+                    </td>
+                </tr>
+                <!-- <tr>
+                <td>
+                </td>
+                <td><i>(1-6 months)</i>
+                </td>
+                <td><i>(7-12 months)</i>
+                </td>
+                <td><i>(13-18 months)</i>
+                </td>
+                <td>(19-24 months)
+                </td>
+                <td>(25-30 months)
+                </td>
+                <td>(31-36 months)
+                </td>
+                <td>(37-42 months)
+                </td></tr> -->
+                <tr>
+                    <td>Nov 2022</td>
+                    <td><b>22.11 LTS</b></td>
+                    <td>22.05</td>
+                    <td>21.11</td>
+                    <td>21.05</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>May 2023</td>
+                    <td>23.05</td>
+                    <td><b>22.11 LTS</b></td>
+                    <td>22.05</td>
+                    <td>21.11</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Nov 2023</td>
+                    <td>23.11</td>
+                    <td>23.05</td>
+                    <td><b>22.11 LTS</b></td>
+                    <td>22.05</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>May 2024</td>
+                    <td>24.05</td>
+                    <td>23.11</td>
+                    <td>23.05</td>
+                    <td><b>22.11 LTS</b></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Nov 2024</td>
+                    <td><b>24.11 LTS</b></td>
+                    <td>24.05</td>
+                    <td>23.11</td>
+                    <td>23.05</td>
+                    <td><b>22.11 LTS</b></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
+                <tr>
+                    <td>May 2025</td>
+                    <td>25.05</td>
+                    <td><b>24.11 LTS</b></td>
+                    <td>24.05</td>
+                    <td>23.11</td>
+                    <td></td>
+                    <td><b>22.11 LTS</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Nov 2025</td>
+                    <td>25.11</td>
+                    <td>25.05</td>
+                    <td><b>24.11 LTS</b></td>
+                    <td>24.05</td>
+                    <td></td>
+                    <td></td>
+                    <td><b>22.11 LTS</b></td>
+                </tr>
+                <tr>
+                    <td>May 2026</td>
+                    <td>26.05</td>
+                    <td>25.11</td>
+                    <td>25.05</td>
+                    <td><b>24.11 LTS</b></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>EOL 22.11</b></td>
+                </tr>
+                <tr>
+                    <td>Nov 2026</td>
+                    <td><b>26.11 LTS</b></td>
+                    <td>26.05</td>
+                    <td>25.11</td>
+                    <td>25.05</td>
+                    <td><b>24.11 LTS</b></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>May 2027</td>
+                    <td>27.05</td>
+                    <td><b>26.11 LTS</b></td>
+                    <td>26.05</td>
+                    <td>25.11</td>
+                    <td></td>
+                    <td><b>24.11 LTS</b></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <p class="passos">Codinomes das versões do Koha</p>
+        <p>Com o período de manutenção de 18 meses acima, geralmente resulta no suporte a 4 versões estáveis ​​de recursos simultaneamente e estas seguem o esquema de nomenclatura padrão do repositório Debian de stable , oldstable e oldoldstable.</p>
+
+        <p>Por exemplo, em maio de 2024, a versão estável de recursos mais atual do Koha será 24.05 e a comunidade manterá:</p>
+        <ul>    
+            <li>Localização 24.05 (estável)</li>
+            <li>Koha 23.11 (estável antigo)</li>
+            <li>Lugar 23.05 (oldoldstable)</li>
+        </ul> 
+        <p class="passos">Qual versão do Koha escolher: stable, oldstable, ou oldoldstable?</p>
+        Para ambientes de produção, o método de instalação recomendado é usar os pacotes Debian , prestando muita atenção à seção siga uma suíte .
+           
+        Se você deseja executar a versão mais livre de bugs do Koha a qualquer momento, você deve rastrear o branch oldoldstable .
+        Se você deseja a versão mais rica em recursos do Koha e não se importa em lidar com alguns bugs a cada poucos meses, então o branch estável é para você.
+        O feliz meio-termo do oldstable receberá novos recursos 6 meses depois do stable , mas deverá ser consideravelmente mais experimentado e testado e, como tal, mais livre de bugs.
+        Se você preferir executar uma versão por mais tempo com menos atualizações importantes, a versão LTS pode ser sua escolha.
+    </div>
+</body>
+</html>
+
+
+
+
