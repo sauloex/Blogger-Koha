@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* estilos para tabela versao */
+
 .corpo {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
@@ -12,6 +12,11 @@
   border-radius: 4px;  
 }
 
+.corpo p{
+  text-align: justify;/* Alinhamento do parágrafo */
+  line-height: 1.5; /* Espaçamento entre as linhas */
+}
+
 .cabecalho {
   font-weight: bolder;
   font-size: 18pt; 
@@ -19,6 +24,7 @@
       
 }
 
+/* estilos para tabela versao */
 #versao {
     border-collapse: collapse;
     width: 100%;
@@ -28,7 +34,6 @@
     color: black;
         
   }
-
 
   /* border: 1px solid black; */
   #versao th,td {
@@ -119,23 +124,47 @@
     padding: 10px;
     border:  1px solid black;
     border-radius: 5px;
-   
    } 
-    /* Css para div Rodapé */
-   .versoes {
-    background-color: #f8f9fa;
-    color: #202122;
-    margin: 1em 0;
-    border: 1px solid #a2a9b1;
-    border-collapse: collapse;
+
+/* Estito da tabela Tipo1-----------------------------------------------------------------*/
+
+caption {
+  padding: 10px;
+  font-style: italic;
+  font-weight: bold;
 }
-    .versoes > * > tr > td {
-    border: 1px solid #a2a9b1;
-    padding: 0.2em 0.4em;
+.Tipo1 {
+  width: 60%;
+  border-collapse: collapse;
+  background-color: #FFFFF0;
+  border: 2px solid #000000;
+  font-family: Arial, sans-serif;
+  font-size: 11pt;  
 }
-    .versoes > * > tr > th {
-    border: 1px solid #a2a9b1;
-    background-color: #eaecf0;
-    text-align: center;
+
+/* Estilo para as células do cabeçalho */
+.Tipo1 th {
+  background-color: #ffffcc;
+  border: 1px solid #000000;
+  padding: 8px;
+  font-size: 14pt;
 }
-</style>
+/* Estilo segunda linha */
+.Tipo1 .segundalinha {
+  font-weight: bold;
+}
+
+/* Estilo para as células de dados */
+.Tipo1 td {
+  border: 1px solid #000000;
+  padding: 8px;
+  text-align: center; /* Centralizar o texto */
+}
+.Tipo1 td.texto {
+   text-align:justify; /* Centralizar o texto */
+}
+
+/* Estilo para a célula da versão LTS */
+.Tipo1 td b {
+  color: #008000; /* Verde */
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pr-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElasticSearch</title>
+    <link rel="stylesheet" href="estilo/style.css">
+</head>
+<body>
+
+    <table id="versao"> 
+        <tr>
+          <th>Versão do Koha:</th>
+          <td>22.11.17</td>
+        </tr>
+        <tr>
+          <th>Sistema Operacional:</th>
+          <td>Ubuntu (este tutorial pode ser aplicado todos os SO derivados do Debian e Ubuntu)</td>
+        </tr>
+        <tr>
+          <th>Resumo</th>
+          <td>Neste tutorial você aprenderá realizar a troca do 'motor de busca' do Koha: Zebra para ElasticSearch</td>
+        </tr>
+    </table><br>
+
+    <div class="corpo"> <!-- Div corpo da postagem -->
+
+        <h3>Como Instalar o Elasticsearch no Koha?</h3>
+
+        <p>Tradicionalmente, Zebra tem sido o motor de busca padrão para Koha devido à sua integração estabelecida e ao suporte para formatos bibliográficos como MARC21. </p>
+
+        <p>Aqui está o manual de instalação do Elasticsearch for Koha. Preparei este manual inspirando-me no manual de instalação preparado pelo Dr. Mohan Raj Pradhan, Professor (Aposentado), Departamento de Biblioteconomia e Ciência da Informação, Universidade Tribhuvan, Nepal . Tentei instalar o ElasticSearch no Ubuntu 20.04 LTS. Instale o Koha antes da implementação do Elasticsearch. Experimente a instalação do Elasticsearch em uma máquina de teste, não em um computador de produção Koha.</p>
+
+        <p>Instale as dependências Koha e o Java JDK</p>
+        sudo apt instalar koha-elasticsearch openjdk-11-jdk-headless
+
+        <p>Instalação do Elasticsearch</p>
+
+        <p>Elasticsearch 7 é a versão mais recente. Mas Koha não está pronto para adotar a versão 7. Koha usa o Elasticsearch versão 6.</p>
+
+        sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+        sudo echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+
+        sudo apt-get update && sudo apt-get install elasticsearch
+
+        <p>Configure o Elasticsearch para inicialização automática</p>
+
+        sudo /bin/systemctl daemon-reload
+        sudo /bin/systemctl ativar elasticsearch.service
+
+        <p>Instale o plugin de análise-icu</p>
+        sudo /usr/share/elasticsearch/bin/elasticsearch-plugin instalar análise-icu
+
+        <p>Reinicie o servidor Elasticsearch</p>
+        sudo systemctl iniciar elasticsearch.service
+
+        <p>Obs: Reinicie servidor Linux Ubuntu</p>
+
+        <p>Verifique o status de execução do Elasticsearch</p>
+        
+        <p>Aguarde alguns segundos e verifique se está funcionando corretamente</p>
+        
+        sudo apt install curl
+        curl localhost:9200
+        curl http://localhost:9200/_cluster/health?pretty
+
+        <p>Verifique a versão instalada do Elasticsearch</p>
+        cd /usr/share/elasticsearch
+        sudo ./bin/elasticsearch --version
+
+        <p>Alterar mecanismo de pesquisa em Koha</p>
+        Administração > Preferências globais do sistema > Administração > Mecanismo de pesquisa.
+
+        <p>Reconstruir índice de pesquisa</p>
+        sudo koha-elasticsearch --rebuild -d biblioteca
+
+        <p><b>Referências</b></p>
+        
+        <p>Elasticsearch</p>
+        https://wiki.koha-community.org/wiki/Elasticsearch
+        
+        <p>Instale o Elasticsearch com o pacote Debian</p>
+        https://www.elastic.co/guide/en/elasticsearch/reference/6.8/deb.html
+        
+        <p>Koha adota Elastic para funcionalidade de pesquisa</p>
+        https://bywatersolutions.com/news/koha-adopts-elastic- funcionalidade para pesquisa
+
+
+
+
+        <p>Comandos importante sobre o ElasticSearch no terminal para:</p>
+        
+        <p>Verificar o staus do motor de busca, ou seja se está em execução</p>
+        sudo systemctl status elasticsearch
+        
+        <p>Pausar a execução do motor de busca</p>
+        sudo systemctl stop elasticsearch
+    
+        <p>Iniciar a execução do motor de busca, ou seja, starta-lo </p>  
+        sudo systemctl start elasticsearch
+
+        <p>Verificar qual é a versão dele</p>
+        curl -X GET "localhost:9200/"
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+Fluxo de trabalho de desenvolvimento
+
+O fluxo de trabalho de correção de bug descreve as diferentes etapas necessárias para corrigir e aprimorar o código Koha.
+
+Diferentes pessoas estão envolvidas no processo. O processo de correção de bugs funciona melhor quando indivíduos de diferentes empresas trabalham no código para que novos olhos e novas perspectivas melhorem nosso trabalho.
+
+Esta enquete pode ajudá-lo a decidir no que trabalhar primeiro.
+
+----------
+Índice
+1Passos
+2Casos de falha
+3Funções
+4Regras
+
+---------------
+Passos
+
+Um diagrama de fluxo de trabalho básico para correção de bugs na comunidade Koha
+Um bug/aprimoramento é enviado pelo 'repórter de bug'.
+Um patch é enviado pelo 'gravador do patch' e o status do bug é alterado para Needs Sign-off .
+O patch é testado e assinado pelo 'signatário do patch' e o status do bug é alterado para Signed off .
+O patch é verificado pelo membro da equipe de controle de qualidade e o status do bug é definido como Aprovado pelo controle de qualidade
+O patch é testado e aprovado pelo RM
+Se o patch for aprovado, ele será enviado para main pelo RM e o status será definido como Pushed to main .
+Se o Mantenedor da Versão ("RMaint") decidir que o patch também pode ser enviado para a versão estável, ele fará isso e definirá o status como Empurrado para estável
+O bug é marcado como resolvido/corrigido pelo 'bug close'.
+O bug é fechado quando um lançamento contendo esse patch é feito.
+
+---------------
+
+Casos de falha
+
+Se o 'signatário do patch' não puder testar o patch porque ele não se aplica mais, o status será definido como Patch não se aplica
+
+Se o 'signatário do patch' puder aplicar o patch, mas depois de alguns testes perceber que há um problema funcional com o patch, o status será definido como In Discussion ou Failed QA , dependendo do tipo de problema que o testador detectou ( Failed QA deveria deve ser usado se você tiver problemas durante o teste, enquanto In Discussion deve ser usado apenas se houver um desacordo que não possa ser resolvido sem o envolvimento de mais pessoas). A descrição do testador deve ser tão detalhada quanto possível para poder reproduzir a falha.
+
+Se o 'gerente de controle de qualidade' tiver algumas objeções durante o processo de controle de qualidade, o status será definido como Falha no controle de qualidade
+
+Se um patch foi enviado para main e um problema for detectado depois disso, há duas opções:
+    O patch é revertido e um patch revisado é solicitado no bug original.
+    Um novo bug é arquivado, vinculado ao original, explicando que a correção não está completa ou tem um efeito colateral. Sob nenhuma circunstância os bugs da nova funcionalidade devem ser relatados no bug original.
+
+-------------------
+Funções
+
+Bug reporter: É a pessoa que relatou o bug. Também pode ser o escritor do patch (Patch writer )
+
+Patch writer (Escritor do patch): É o desenvolvedor que propôs um patch. Também pode ser o Bug reporter. Ele é o responsável por identificar a causa do problema e desenvolver uma solução. Como já dito, o 'Patch writer' pode ser a mesma pessoa que relatou o bug (Bug reporter), que ao identificar o bug propõe uma correção (patch) para resolvê-lo.
+
+RM: É o "Gerente de Lançamento", que é uma função ocupada por eleição. Ele é responsável por supervisionar e coordenar o processo de lançamento de uma nova versão do software. Isso inclui garantir que todas as correções e melhorias foram devidamente integradas e testadas, e que a nova versão está pronta para ser distribuída aos usuários. A eleição para esta função é pautada com base em critérios de competência e confiança pela equipe ou organização.
+
+QA Manager (Gerente de Garantia de Qualidade):é desenvolvedor que foi escolhido como membro da equipe de Garantia de Qualidade (QA) e que tem a responsabilidade de verificar e confirmar que o patch atende aos padrões e requisitos de qualidade definidos pela equipe de QA. Este papel é crucial para assegurar que a correção não apenas resolve o problema, mas também mantém ou melhora a qualidade geral do software.
+
+Patch signer (Signatário do patch): É a pessoa que testou o patch e verificou que ele funciona corretamente. Ou melhor, é a pessoa que, após testar o patch, confirma que mesmo funciona conforme esperado. É o responsável por assinar ou aprova o patch, garantindo que ele resolve bug.
+
+Bug closer (Fechador de bugs): é a pessoa que verificar se o bug foi corrigido. Pode ser o relator, mas é preferível que o autor do patch não seja o fechador para garantir uma correção imparcial e mais confiável.
+
+---------------------------
+
+Regras
+
+Um relatório de bug deve conter informações que permitam que outras pessoas reproduzam o bug e testem o patch. Normalmente, há uma seção "etapas para reproduzir: faça isso, faça aquilo, você verá esse comportamento problemático".
+
+O signatário do patch não deve ser o escritor do patch. De preferência, o autor e o assinante do patch não devem ser da mesma empresa ou instituição.
+
+O signatário do patch e o membro da equipe de controle de qualidade são duas pessoas diferentes.
+
+O bug mais próximo não deve ser o autor do patch, a menos que o patch também tenha sido escrito pelo repórter original. De preferência, o bug mais próximo também não deve ser assinante do patch.
+
+Se um patch não for aprovado no controle de qualidade por um longo período, o desenvolvedor pode deixar uma nota sobre o bug ou enviar um e-mail para a lista de discussão como um empurrãozinho para os membros da equipe de controle de qualidade.
+
+Se um patch não for aprovado no controle de qualidade por um mês, alguém da mesma empresa ou instituição do autor do patch poderá fazer o controle de qualidade, desde que o signatário do patch seja de outra empresa ou instituição. O RM ainda pode solicitar uma segunda aprovação neste caso.
+
+---------------------------
+
+Manual do desenvolvedor <!-- Verificar os links abaixo -->
+
+Envolvendo-se | Fluxo de trabalho de desenvolvimento | Diretrizes para relatórios de bugs | RFCs | Plug-ins | Ganchos de plug-in
+Controle de versão usando Git | git bz | Confirmar mensagens | Aprovar patches | Ferramentas de teste de controle de qualidade | Como fazer controle de qualidade | Depuração no VIM
+Diretrizes de codificação | Objetos Koha | Como fazer a API Rest | Diretrizes de codificação - API | Testes unitários | Integração Contínua | Padrões de interface | Atualizações de banco de dados | Adicionando um syspref | Bootstrap e MENOS
+Pacotes Debian | Construindo Pacotes Debian | Construção fácil de pacotes | Comandos
+Externo: Painel | Bugzila | Esquema | perldoc | API REST | Jenkins
