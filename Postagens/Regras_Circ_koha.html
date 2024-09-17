@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <th>Resumo</th>
-          <td>Neste tutorial você aprenderá a configurar as regras de circulação da sua biblioteca</td>
+          <td>Neste tutorial você aprenderá a configurar as Regras de Circulação da sua Biblioteca</td>
         </tr>
     </table><br>
 
@@ -29,22 +29,22 @@
         <p>As regras definem como seus itens irão circular (empréstimos e devoluções), como e quando as multas são calculadas (se for o caso) e como as reservas são tratadas.</p>
 
         <div class="obs">
-        <p>Obs:<br>
+        <p><b>Obs:</b><br>
         Somente funcionários com a permissão 'manage_circ_rules' ou com permissão de 'superlibrarian' terão acesso a esta seção.</p>
         </div>
         <p>As regras são aplicadas da mais específica para a menos específica, usando a primeira encontrada nesta ordem:</p>
         <ul></ul>
 
-        <ul>
-          <li>mesma biblioteca, mesma categoria de usuários, mesmo tipo de item</li>
-          <li>mesma biblioteca, mesma categoria de usuários, todos os tipos de itens</li>
-          <li>mesma biblioteca, todas as categorias de usuários, mesmo tipo de item</li>
-          <li>mesma biblioteca, todas as categorias de usuários, todos os tipos de itens</li>
-          <li>padrão (todas as bibliotecas), mesma categoria de usuários, mesmo tipo de item</li>
-          <li>padrão (todas as bibliotecas), mesma categoria de usuários, todos os tipos de itens</li>
-          <li>padrão (todas as bibliotecas), todas as categorias de usuários, mesmo tipo de item</li>
-          <li>padrão (todas as bibliotecas), todas as categorias de usuários, todos os tipos de itens</li>
-        </ul>
+        <ol>
+          <li>Mesma biblioteca, mesma categoria de usuários, mesmo tipo de item</li>
+          <li>Mesma biblioteca, mesma categoria de usuários, todos os tipos de itens</li>
+          <li>Mesma biblioteca, todas as categorias de usuários, mesmo tipo de item</li>
+          <li>Mesma biblioteca, todas as categorias de usuários, todos os tipos de itens</li>
+          <li>Padrão (todas as bibliotecas), mesma categoria de usuários, mesmo tipo de item</li>
+          <li>Padrão (todas as bibliotecas), mesma categoria de usuários, todos os tipos de itens</li>
+          <li>Padrão (todas as bibliotecas), todas as categorias de usuários, mesmo tipo de item</li>
+          <li>Padrão (todas as bibliotecas), todas as categorias de usuários, todos os tipos de itens</li>
+        </ol>
 
         <p>As preferênas do sistema '<a href="https://koha-community.org/manual/21.11/en/html/circulationpreferences.html#circcontrol-label" target="_blank" rel="external">CircControl</a>' e o <a href="https://koha-community.org/manual/21.11/en/html/circulationpreferences.html#homeorholdingbranch-label" target="_blank" rel="external">HomeOrHoldingBranch</a> devem configuradas para definir qual regra de circulação seguir:</p>
 
@@ -52,82 +52,103 @@
           <li>Se <b>CircControl</b> estiver definido como “a biblioteca na qual você está conectado”, as regras de circulação serão selecionadas com base na biblioteca na qual você está conectado</li>
           <li>Se <b>CircControl</b> for definido como “a biblioteca de onde o usuário é”, as regras de circulação serão selecionadas com base na biblioteca do usuário</li>
           <li>Se <b>CircControl</b> for definido como "a biblioteca de onde o item é", as regras de circulação serão selecionadas com base na biblioteca do item, onde HomeOrHoldingBranch escolhe se a biblioteca inicial do item ou sua biblioteca de retenção será usada.</li>
-          <li>Se IndependentBranches estiver definido como 'Prevent', o valor de HomeOrHoldingBranch será usado para descobrir se o item pode ser retirado. Se a biblioteca inicial do item não corresponder à biblioteca registrada, o item não poderá ser retirado, a menos que você tenha a permissão de superlibrarian.</li>
+          <li>Se <a href="https://koha-community.org/manual/21.11/en/html/administrationpreferences.html#independentbranches-label" target="_blank">IndependentBranches</a> estiver definido como 'Prevent', o valor de <a href="https://koha-community.org/manual/21.11/en/html/circulationpreferences.html#homeorholdingbranch-label" target="_blank" rel="external">HomeOrHoldingBranch</a> será usado para descobrir se o item pode ser retirado. Se a biblioteca inicial do item não corresponder à biblioteca registrada, o item não poderá ser retirado, a menos que você tenha a permissão de superlibrarian.</li>
         </ul>
 
         <p class="obs">
-          Importante! <br>
+          <b>Importante</b>! <br>
           É preciso definir, no mínimo, uma regra de circulação padrão. Ela servirá para todos os tipos de itens, todas as bibliotecas e todas as categorias de usuários. Ou seja, a Biblioteca que não possuir regras de circulação específicas utilizarão a regra padrão. 
         </p>
 
         <h3>Definição de regras de circulação</h3>
-        Usando a matriz de regras de emissão, você pode definir regras que dependem de combinações de categorias de usuários/tipos de itens.
+        <p>Ao usar matriz de regras de circulação, você pode definir regras que dependem de combinações de categorias de usuários/tipos de itens.</p>
+        
+        <p class="obs"><b>Obs:</b>
+          <br>
+          Como a matriz é muito ampla, você pode exportar as regras existentes no formato Microsoft Excel ou CSV para consultá-las usando o botão "Exportar" na parte superior da tabela.</p>
 
-        Observação
+        <p>Para definir suas regras, escolha uma biblioteca no menu suspenso (ou 'Regras padrão para todas as bibliotecas' se quiser aplicar essas regras a todas bibliotecas de uma Rede):</p>
 
-        Como a matriz é muito ampla, você pode exportar as regras existentes no formato Microsoft Excel ou CSV para consultá-las usando o botão "Exportar" na parte superior da tabela.
+        <!-- imagem selecionar bibliotecas -->
+         <img src="https://koha-community.org/manual/21.11/en/html/_images/selectissuinglibrary.png" alt="">
 
-        Para definir suas regras, escolha uma biblioteca no menu suspenso (ou 'Regras padrão para todas as bibliotecas' se quiser aplicar essas regras a todas as filiais):
+        <p>Na matriz, você pode escolher qualquer combinação de categorias de usuários e tipos de itens para aplicar as regras</p>
 
-        Menu suspenso 'Selecione uma biblioteca'
+       <a href="https://koha-community.org/manual/22.11/pt_BR/html/_images/addcircrule.png" target="_blank"><img src="https:koha-community.org/manual/22.11/pt_BR/html/_images/addcircrule.png" height="202" width="1395"></a>
 
-        Na matriz, você pode escolher qualquer combinação de categorias de usuários e tipos de itens para aplicar as regras
+        <p>Primeiro, escolha a qual categoria de usuários você gostaria que a regra fosse aplicada. Se você deixar isso em 'Todos', ela será aplicada a todas as categorias de usuários</p>
+        <!-- imagem selecionar categoria de usuários -->
+        <img src="imagens/Categoria_usuários.png" alt="">
 
-        Tabela de regras de circulação
+        <p>Selecione o tipo de item ao qual você gostaria que esta regra se aplicasse. Se você deixar isso como 'Todos', ela será aplicada a todos os tipos de itens para esta categoria de usuários</p>
+        <!-- imagem selecionar categoria de usuários -->
+        <img src="imagens/Tipo_item.png" alt="">
 
-        Primeiro, escolha a qual categoria de usuários você gostaria que a regra fosse aplicada. Se você deixar isso em 'All', ela será aplicada a todas as categorias de usuários
+        <p>Adicione nota/Observação sobre sua regra de circulação. Isso pode ser útil para lembrar quando uma regra foi criada ou alterada. Ou, faça qualquer outra Observação</p>
+        <!-- imagem observação -->
+        <img src="imagens/Observacao.png" alt="">
 
-        Selecione o tipo de item ao qual você gostaria que esta regra se aplicasse. Se você deixar isso como 'All', ela será aplicada a todos os tipos de itens para esta categoria de usuários
+        <p>Defina o quantitativo total de itens que um usuário desta categoria pode retirar ao mesmo tempo, inserindo um número no campo '<b>Empréstimos autorizados</b>'.</p>
+        <!-- imagem total de empréstimos -->
+        <img src="imagens/total_emprestimos.png" alt="">
 
-        Se um tipo de item tiver um tipo de item pai, a regra será exibida como Pai -> Filho. O número de checkouts atuais será limitado ao máximo para o pai (incluindo tipos irmãos) ou à regra do tipo específico, o que for menor.
+        <p>Se a biblioteca permitir empréstimo local, é preciso definir um limite para o número de itens que os usuários dessa categoria possam ler/pesquisar no local. Em '<b>Empréstimo on-site atualmente permitidos</b>'</p>
+        <!-- imagem Emprestimo Local -->
+        <img src="imagens/emprestimo_local.png" alt="">
 
-        Tabela de regras de circulação com uma regra para DVDs cujo máximo é 5 checkouts e uma regra para Blu-ray (filho do DVD) cujo máximo é 2 checkouts
+        <p class="obs">Obs:<br>
+          Esta configuração também depende da preferência <a href="https://koha-community.org/manual/22.11/pt_BR/html/circulationpreferences.html#consideronsitecheckoutsasnormalcheckouts-label" target="blank">ConsiderOnSiteCheckoutsAsNormalCheckouts</a></p>
 
-        No exemplo acima, há uma regra para o tipo de item DVD com um máximo de 5 checkouts e uma regra para Blu-ray, um filho de DVD, com um máximo de 2 checkouts. Um usuários nesta biblioteca poderá retirar no máximo 2 Blu-rays em um total de 5 itens dos tipos DVD ou Blu-ray.
+        <p>Defina o período de tempo em que um item deste tipo pode ser emprestado para um usuário desta categoria. Insira o número de unidades (dias ou horas) na caixa '<b>Período de empréstimo</b>'.</p>
+        <!-- imagem periodo emprestimo -->
+        <img src="imagens/periodo_emprestimo.png" alt="">
 
-        Para resumir, um usuário desta biblioteca poderá levar: - 0 Blu-ray e no máximo 5 DVDs - 1 Blu-ray e no máximo 4 DVDs - 2 Blu-ray e no máximo 3 DVDs
+        <p>&#128205; Defina se o período de empréstimo deve incluir dias fechados ou não na coluna '<b>Modo de dias</b>'. A opção escolhida aqui substituirá a preferência do sistema <a href="https://koha-community.org/manual/22.11/pt_BR/html/circulationpreferences.html#usedaysmode-label" target="_blank">useDaysMode</a> para esta regra em particular.</p>
+          <!-- imagem modo de dias -->
+          <img src="imagens/modo_dias.png" alt="">
 
-        Adicione notas sobre sua regra de circulação no campo de notas. Isso pode ser útil para lembrar por que e quando algo foi alterado pela última vez.
+        <ul type="square">
+          <li>A opção '<b>Padrão</b>' usará a opção definida na preferência do sistema useDaysMode</li>
+          <li>Selecione a opção 'Calendário' se quiser usar o calendário para pular os dias em que a biblioteca está fechada</li>
+          <li>Selecione a opção 'Data de vencimento' se quiser adiar a data de vencimento para o próximo dia útil</li>
+          <li>Escolha a opção 'Dias' se quiser ignorar o calendário e calcular a data de vencimento diretamente</li>
+          <li>Selecione a opção 'Dia da semana' se quiser usar o calendário para adiar a data de vencimento para o próximo dia útil correspondente aberto para períodos de empréstimo semanais ou para o próximo dia útil aberto caso contrário</li>
+        </ul>
 
-        Limite o número de itens deste tipo que um cliente desta categoria pode retirar ao mesmo tempo, inserindo um número no campo "Retiradas permitidas no momento".
+        <p>Selecione em qual unidade de tempo, dias ou horas, o período de empréstimo e as multas serão calculados na coluna 'Unidade'</p>
+        <!-- imagem unidade-->
+        <img src="imagens/unidade.png" alt="">
 
-        Se você permitir check-outs no local , talvez seja interessante definir um limite para o número de itens desse tipo que os usuários dessa categoria podem ter no local.
+        <p class="obs"><b>Obs:</b><br>
+          Se usar "horas", você pode definir o horário de funcionamento de cada biblioteca e determinar como o horário de vencimento será calculado para não cair fora do horário de funcionamento.
+        </p>
 
-        Observação
+        <p>Você também pode definir uma data de vencimento rígida para uma categoria de usuários específica e tipo de item. A data de vencimento rígida oferece três opções:</p>
 
-        Esta configuração também depende da preferência ConsiderOnSiteCheckoutsAsNormalCheckouts
+        <ul type="square">
 
-        Defina o período de tempo em que um item deste tipo pode ser emprestado a um cliente desta categoria, inserindo o número de unidades (dias ou horas) na caixa "Período de empréstimo".
+          <li>Exatamente em: A data de vencimento de qualquer item retirado com esta regra será definida como a data de vencimento definitiva.</li>
+          <li>Antes: Koha calculará o período normal do empréstimo. Se a data de vencimento calculada for depois ou na data de vencimento rígida, a data de vencimento rígida será usada.</li>
+          <li>Depois: Koha calculará o período normal do empréstimo. Se a data de vencimento calculada for anterior à data de vencimento rígida, a data de vencimento rígida será usada.</li>
 
-        Defina se o período de empréstimo deve incluir dias fechados ou não na coluna 'Days mode'. A opção escolhida aqui substituirá a preferência do sistema useDaysMode para esta regra em particular.
+        </ul>
+        
+        <p> Em '<b>Montante da multa</b>' deve conter o valor que você gostaria de cobrar por itens atrasados.</p>
 
-        A opção 'Default' usará a opção definida na preferência do sistema useDaysMode
+        <p class="obs"><b>Importante:</b><br>
+        Insira apenas números inteiros e pontos decimais (sem símbolos de moeda). Exemplo: 1, 1.20, 5, 2.5. Não use vírgula! 
+        </p>
 
-        Selecione a opção 'Calendário' se quiser usar o calendário para pular os dias em que a biblioteca está fechada
+        <p>Insira em '<b>Intervalo de cobrança da multas</b>' o período a ser considerado para cobrança de multa. Exemplo: Se a coluna 'Unidade' estiver selecionado 'Dias' e for colocado o valor '1' o sistema calculará o 'Montante da multa' para cada dia de atraso.</p>
 
-        Selecione a opção 'Data de vencimento' se quiser adiar a data de vencimento para o próximo dia útil
-
-        Escolha a opção 'Dias' se quiser ignorar o calendário e calcular a data de vencimento diretamente
-
-        Selecione a opção 'Dia da semana' se quiser usar o calendário para adiar a data de vencimento para o próximo dia útil correspondente aberto para períodos de empréstimo semanais ou para o próximo dia útil aberto caso contrário
-
-        Selecione em qual unidade de tempo, dias ou horas, o período de empréstimo e as multas serão calculados na coluna 'Unidade'
-
-        Você também pode definir uma data de vencimento rígida para uma categoria de usuários específica e tipo de item. A data de vencimento rígida oferece três opções:
-
-        Exatamente em: A data de vencimento de qualquer item retirado com esta regra será definida como a data de vencimento definitiva.
-
-        Antes: Koha calculará o período normal do empréstimo. Se a data de vencimento calculada for depois ou na data de vencimento rígida, a data de vencimento rígida será usada.
-
-        Depois: Koha calculará o período normal do empréstimo. Se a data de vencimento calculada for anterior à data de vencimento rígida, a data de vencimento rígida será usada.
-
-        'Valor da multa' deve conter o valor que você gostaria de cobrar por itens atrasados.
-
-        Importante
-
-        Insira apenas números e pontos decimais (sem símbolos de moeda).
-
-        Insira o 'Intervalo de cobrança de multas' na unidade que você definir (ex. cobrar multas a cada 1 dia ou a cada 2 horas). A preferência do sistema finesCalendar controla se os dias em que a biblioteca está fechada serão levados em conta ou não.
+        <ul>
+          <li>Montante da multa: 1.00</li>
+          <li>Unidade: Dias</li>
+          <li>Intervalo de cobrança da multas: 1</li>
+          <li>Cálculo: 1.00 a cada 1 Dia de atraso.</li>
+        </ul>    
+          
+        <p>A preferência do sistema <a href="https://koha-community.org/manual/21.11/en/html/circulationpreferences.html#finescalendar-label" target="_blank">finesCalendar</a> controla se os dias em que a biblioteca está fechada serão levados em conta ou não.</p>
 
         "Quando carregar" é mais útil em bibliotecas que têm um intervalo de carregamento fino de mais de 1 dia.
 
