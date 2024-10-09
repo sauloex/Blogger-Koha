@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+'<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,7 @@
 
     <div class="corpo"> <!-- Div corpo da postagem -->
         <h3>Regras de circulação e multa</h3>
-        <p>As regras definem como seus itens irão circular (empréstimos e devoluções), como e quando as multas são calculadas (se for o caso) e como as reservas são tratadas.</p>
+        <p>As regras definem como seus itens irão circular (empréstimos, devoluções, renovações e reservas), como e quando as multas são calculadas (se for o caso).</p>
 
         <div class="obs">
         <p><b>Obs:</b><br>
@@ -88,6 +88,7 @@
         <!-- imagem observação -->
         <img src="imagens/Observacao.png" alt="">
 
+        <!-- Configuração dos dados do Empréstimo#################################################################################-->
         <p>Defina o quantitativo total de itens que um usuário desta categoria pode retirar ao mesmo tempo, inserindo um número no campo '<b>Empréstimos autorizados</b>'.</p>
         <!-- imagem total de empréstimos -->
         <img src="imagens/total_emprestimos.png" alt="">
@@ -97,13 +98,13 @@
         <img src="imagens/emprestimo_local.png" alt="">
 
         <p class="obs">Obs:<br>
-          Esta configuração também depende da preferência <a href="https://koha-community.org/manual/22.11/pt_BR/html/circulationpreferences.html#consideronsitecheckoutsasnormalcheckouts-label" target="blank">ConsiderOnSiteCheckoutsAsNormalCheckouts</a></p>
+          Esta configuração também depende da preferência <a href="https://koha-community.org/manual/22.11/pt_BR/html/circulationpreferences.html#consideronsiteempréstimosasnormalempréstimos-label" target="blank">ConsiderOnSiteempréstimosAsNormalempréstimos</a></p>
 
         <p>Defina o período de tempo em que um item deste tipo pode ser emprestado para um usuário desta categoria. Insira o número de unidades (dias ou horas) na caixa '<b>Período de empréstimo</b>'.</p>
         <!-- imagem periodo emprestimo -->
         <img src="imagens/periodo_emprestimo.png" alt="">
 
-        <p>&#128205; Defina se o período de empréstimo deve incluir dias fechados ou não na coluna '<b>Modo de dias</b>'. A opção escolhida aqui substituirá a preferência do sistema <a href="https://koha-community.org/manual/22.11/pt_BR/html/circulationpreferences.html#usedaysmode-label" target="_blank">useDaysMode</a> para esta regra em particular.</p>
+        <p>&#128205; Defina se o período de empréstimo deve incluir dias fechados ou não no campo '<b>Modo de dias</b>'. A opção escolhida aqui substituirá a preferência do sistema <a href="https://koha-community.org/manual/22.11/pt_BR/html/circulationpreferences.html#usedaysmode-label" target="_blank">useDaysMode</a> para esta regra em particular.</p>
           <!-- imagem modo de dias -->
           <img src="imagens/modo_dias.png" alt="">
 
@@ -115,7 +116,7 @@
           <li>Selecione a opção 'Dia da semana' se quiser usar o calendário para adiar a data de vencimento para o próximo dia útil correspondente aberto para períodos de empréstimo semanais ou para o próximo dia útil aberto caso contrário</li>
         </ul>
 
-        <p>Selecione em qual unidade de tempo, dias ou horas, o período de empréstimo e as multas serão calculados na coluna 'Unidade'</p>
+        <p>Selecione em qual unidade de tempo, dias ou horas, o período de empréstimo e as multas serão calculados no campo 'Unidade'</p>
         <!-- imagem unidade-->
         <img src="imagens/unidade.png" alt="">
 
@@ -133,13 +134,14 @@
 
         </ul>
         
+        <!-- Configuração das Multas ########################################################################################-->
         <p> Em '<b>Montante da multa</b>' deve conter o valor que você gostaria de cobrar por itens atrasados.</p>
 
         <p class="obs"><b>Importante:</b><br>
         Insira apenas números inteiros e pontos decimais (sem símbolos de moeda). Exemplo: 1, 1.20, 5, 2.5. Não use vírgula! 
         </p>
 
-        <p>Insira em '<b>Intervalo de cobrança da multas</b>' o período a ser considerado para cobrança de multa. Exemplo: Se a coluna 'Unidade' estiver selecionado 'Dias' e for colocado o valor '1' o sistema calculará o 'Montante da multa' para cada dia de atraso.</p>
+        <p>Insira em '<b>Intervalo de cobrança da multas</b>' o período a ser considerado para cobrança de multa. Exemplo: Se o campo 'Unidade' estiver selecionado 'Dias' e for colocado o valor '1' o sistema calculará o 'Montante da multa' para cada dia de atraso.</p>
 
         <ul>
           <li>Montante da multa: 1.00</li>
@@ -150,91 +152,85 @@
           
         <p>A preferência do sistema <a href="https://koha-community.org/manual/21.11/en/html/circulationpreferences.html#finescalendar-label" target="_blank">finesCalendar</a> controla se os dias em que a biblioteca está fechada serão levados em conta ou não.</p>
 
-        "Quando carregar" é mais útil em bibliotecas que têm um intervalo de carregamento fino de mais de 1 dia.
+        <p>Em "Quando cobrar" é muito útil quando o intervalo de multa é maior que 1 dia. Define se a multa será cobrada no final do período ou no início.</p>
 
-        Fim do intervalo: Considerando um período de carência de 2 dias e um intervalo de multa de 7 dias, a primeira multa aparecerá 7 dias após a data de vencimento, sempre levará um intervalo de multa (7 dias), antes que a primeira multa seja cobrada.
+        <ul>
+          <li>Fim do intervalo: Considerando um período de carência de 2 dias e um intervalo de multa de 7 dias, a primeira multa aparecerá 7 dias após a data de vencimento, sempre levará um intervalo de multa (7 dias), antes que a primeira multa seja cobrada.</li>
+          <li>Início do intervalo: Considerando um período de carência de 2 dias e um intervalo de multa de 7 dias, a primeira multa aparecerá 2 dias após a data de vencimento e a segunda multa 7 dias após a data de vencimento.</li>
+        </ul>
 
-        Início do intervalo: Considerando um período de carência de 2 dias e um intervalo de multa de 7 dias, a primeira multa aparecerá 2 dias após a data de vencimento e a segunda multa 7 dias após a data de vencimento.
+        <p>O 'período de carência de multa' é o período de tempo em que um item pode estar atrasado antes de você começar a cobrar multas. A preferência do sistema <a href="https://koha-community.org/manual/22.11/en/html/circulationpreferences.html#finesincludegraceperiod-label" target="_blank">FinesIncludeGracePeriod</a> controla se o período de carência será incluído no cálculo da multa ou não.</p>
 
-        O 'período de carência de multa' é o período de tempo em que um item pode estar atrasado antes de você começar a cobrar multas. A preferência do sistema FinesIncludeGracePeriod controla se o período de carência será incluído no cálculo da multa ou não.
+        <p class="obs"><b>Obs:</b><br>
+          O período de carência só poderá ser definido para a unidade 'Dia', não em 'Horas'
+        </p>
 
-        Importante
+        O 'Atraso com multas (montante)' é o limite máximo por item para esta combinação de cliente e tipo de item.
+        
+        <p class="obs"><b>Obs:</b><br>
+        Se este campo for deixado em branco, o Koha não colocará um limite nas multas que este item acumulará. Um valor máximo de multa para todos os atrasos pode ser definido usando a preferência do sistema <a href="https://koha-community.org/manual/22.11/en/html/patronspreferences.html#maxfine-label" target="_blank">MaxFine</a>.</p>
 
-        Isso só pode ser definido para a unidade 'Dia', não em 'Horas'
+        <p>Se você quiser evitar cobrar a mais dos usuários por itens perdidos, você pode marcar a caixa em "Limite de multa no preço de reposição". Isso evitará que as multas dos usuários ultrapassem o preço de reposição do item.</p>
 
-        O 'limite de multas por atraso' é a multa máxima por item para esta combinação de cliente e tipo de item.
+        <p class="obs"><b>Obs:</b><br>          
+          Se o 'Limite de multas por atraso' também for definido, a multa será a menor das duas, se ambas se aplicarem ao empréstimo em atraso.</p>  
+        
+        <!-- Configuração da Suspensão ###################################################################################-->
+        <p>Se a biblioteca "penalizar" os usuários suspendendo suas contas, é preciso inserir o número de dias em que o usuário deverá ser suspenso no campo "Suspensão em dias". Isso só pode ser definido para a unidade 'Dia', não em 'Horas'</p>
+        
+        <p>É possível definir o número máximo de dias que um usuário será suspenso no campo 'Duração máxima da suspensão'</p>
 
-        Importante
+        <p>A opção 'Intervalo de cobrança de suspensão' é como o 'Intervalo de cobrança de multa'. Por exemplo, A Biblioteca pode suspender um usuário por um dia para cada dois dias de atraso.</p>
 
-        Se este campo for deixado em branco, o Koha não colocará um limite nas multas que este item acumulará. Um valor máximo de multa para todos os atrasos pode ser definido usando a preferência do sistema MaxFine .
+        <!-- Configuração de Renovação ###################################################################################-->
 
-        Se você quiser evitar cobrar a mais dos usuários por itens perdidos, você pode marcar a caixa em "Limite de multa no preço de reposição". Isso evitará que as multas dos usuários ultrapassem o preço de reposição do item.
+        <p>Para que um usuário possa renovar um item emprestado, informe quantas vezes ele pode renová-lo na caixa "Renovações permitidas". Use números inteiros.</p>
 
-        Observação
+        <p class="obs"><b>Obs:</b><br> 
+        Para permitir <b>renovações sem a presença da física da obra na biblioteca</b> é preciso ativar a preferência <a href="https://koha-community.org/manual/22.11/en/html/circulationpreferences.html#unseenrenewals-label">UnseenRenewals</a> e digitar quantas renovações os usuários podem fazer desse tipo. Entenda! Isso não é um acréscimo no total de renovações normais que um usuário pode fazer, mas sim quantas renovações sem a presença da física da obra podem ser feitas dentro do número total de renovações permitidas.</p>
 
-        Se o 'Limite de multas por atraso' também for definido, a multa será a menor das duas, se ambas se aplicarem ao checkout em atraso.
+        <p>Para definir a duração do período de empréstimo de renovação (de acordo com a unidade de tempo escolhida) digite um número inteiro na caixa "Período de renovação". Normalmente as bibliotecas usam o mesmo período de empréstimo para as renovações.</p> 
 
-        Se sua biblioteca "multar" os usuários suspendendo suas contas, você pode inserir o número de dias em que a multa deverá ser suspensa no campo "Suspensão em dias".
+        <p>A biblioteca poderá controlar o quanto antes da data de vencimento os usuários poderão renovar seus materiais emprestados no campo "<b>Não renovar antes de</b>".</p>
+        
+        <ul>
+          <li>Os itens podem ser renovados a qualquer momento se este valor for deixado em branco. Caso contrário, os itens só podem ser renovados se o item for devido após o número em unidades (dias/horas) inserido nesta caixa.</li>
+          <li>Para um controle mais mais preciso sobre esse período (por exemplo, uma precisão maior que dias, como horas), ajuste a configuração <a href="https://koha-community.org/manual/22.11/en/html/circulationpreferences.html#norenewalbeforeprecision-label">NoRenewalBeforePrecision</a>.</li>
+        </ul>
 
-        Importante
+        <p> A biblioteca poderá habilitar renovações automáticas para certos itens/usuários caso queira. O empréstimo será renovado automaticamente seguindo as regras de circulação, a menos que haja uma reserva no item.</p>
 
-        Isso só pode ser definido para a unidade 'Dia', não em 'Horas'
+        <p class="obs"><b>Obs:</b><br> 
+        Para que as renovações automáticas entrem em execução é preciso habilitar a <a href="https://koha-community.org/manual/22.11/pt_BR/html/cron_jobs.html#cron-automatic-renewal-label" target="_blank">tarefa cron de renovação automática</a>.<br>
+        
+        Este recurso precisa ter o campo “nenhuma renovação antes” preenchida ou ele será renovado automaticamente todos os dias após a data de vencimento.</p>
 
-        Você também pode definir o número máximo de dias que um cliente será suspenso na configuração 'Duração máxima da suspensão'
+        <p>Se você estiver usando renovações automáticas, você pode usar 'Nenhuma renovação automática após' para limitar o tempo que um usuários pode ter o item. Por exemplo: não permita renovações automáticas após um período de empréstimo de 80 dias.</p>
 
-        A opção 'Intervalo de cobrança de suspensão' é como o 'Intervalo de cobrança de multa'. Por exemplo, você pode 'multar' um cliente com uma suspensão de um dia para cada dois dias de atraso.
+        <p>Semelhante à configuração de '<b>Data de devolução extrema</b>', é possível também interromper as renovações automáticas após uma data específica usando a configuração "<b>Não renovar automaticamente após (limite rígido)</b>". Basta inserir uma dada no campo para que as ronovações automáticas sejam interrompidas após ela.</p>
 
-        Em seguida, decida se o cliente pode renovar esse tipo de item e, em caso afirmativo, informe quantas vezes ele pode renová-lo na caixa "Renovações permitidas".
+        <!-- Configuração das Reservas ##########################################################################################-->
 
-        Se você permitir renovações não vistas (veja UnseenRenewals ), insira quantas renovações 'não vistas' os usuários podem fazer. Isso não é um acréscimo às renovações regulares, mas sim quantas renovações 'não vistas' podem ser feitas entre o número total de renovações.
+        <p>Se os usuários desta categoria puderem reservar itens deste tipo, informe o número total de itens (desse tipo) que podem ser reservados no campo "<b>Reservas permitidas (geral)</b>".</p>
+        
+        <ul>
+          <li>Deixar em branco para caso a bilioteca aceite reservas ilimitadas.</li>
+          <li>Se você preferir definir um limite de espera por categoria de cliente, independentemente do tipo de item, consulte a seção de política de finalização de compra e espera padrão por categoria de cliente abaixo.</li>
+          <li>Se você quiser ter um limite de reserva rígido, independente da categoria de usuário e do tipo de item, para esta biblioteca específica, consulte a seção Política padrão de retirada, reserva e devolução abaixo.</li>
+          <p>Se você quiser ter um limite de reserva rígido, independente da categoria de usuário, do tipo de item e em todas as bibliotecas, consulte a preferência do sistema maxreserves.</p>
+        </ul>
 
-        Se você estiver permitindo renovações, poderá controlar a duração do período de empréstimo de renovação (nas unidades que você escolheu) na caixa "Período de renovação".
+        <p>Você também pode definir um limite diário para o número de reservas que um cliente pode fazer.</p>
 
-        Se você permitir renovações, poderá controlar o quanto antes da data de vencimento os usuários poderão renovar seus materiais com a caixa "Nenhuma renovação antes".
+        <p>Enquanto as duas configurações anteriores limitam as reservas que podem ser colocadas em vários registros, em '<b>Reserva por registro (contagem)</b>' é possível limitar o número de reservas que podem ser colocadas em um registro ao mesmo tempo. Por exemplo: para livros de literatura, é permitido que apenas um exemplar de cada registro/título seja reservaddo para pelo mesmo usuário. Mas para obras seriadas, onde os itens representam edições diferentes, a reservar de mais de um exemplar ao mesmo tempo pode ser liberada.</p>  
 
-        Os itens podem ser renovados a qualquer momento se este valor for deixado em branco. Caso contrário, os itens só podem ser renovados se o item for devido após o número em unidades (dias/horas) inserido nesta caixa.
+        <p>Em seguida, você pode decidir como a disponibilidade dos itens influencia a capacidade de fazer uma reserva. A opção 'Nas reservas de prateleira permitidas' tem três configurações:</p>
 
-        Para controlar esse valor em um nível mais granular, defina a preferência NoRenewalBeforePrecision .
-
-        Você pode habilitar renovações automáticas para certos itens/usuários se quiser. Isso será renovado automaticamente seguindo suas regras de circulação, a menos que haja uma reserva no item.
-
-        Importante
-
-        Você precisará habilitar a tarefa cron de renovação automática para que isso funcione.
-
-        Importante
-
-        Este recurso precisa ter a coluna “nenhuma renovação antes” preenchida ou ele será renovado automaticamente todos os dias após a data de vencimento.
-
-        Se você estiver usando renovações automáticas, você pode usar 'Nenhuma renovação automática após' para limitar o tempo que um usuários pode ter o item. Por exemplo: não permita renovações automáticas após um período de checkout de 80 dias.
-
-        Semelhante à configuração de data de vencimento fixa, você também pode interromper as renovações automáticas após uma data específica usando a configuração "Nenhuma renovação automática após (limite fixo)".
-
-        Se os usuários desta categoria puderem reservar itens deste tipo, informe o número total de itens (desse tipo) que podem ser reservados no campo "Reservas permitidas".
-
-        Deixe em branco para ter reservas ilimitadas.
-
-        Se você preferir definir um limite de espera por categoria de cliente, independentemente do tipo de item, consulte a seção de política de finalização de compra e espera padrão por categoria de cliente abaixo.
-
-        Se você quiser ter um limite de reserva rígido, independente da categoria de usuário e do tipo de item, para esta biblioteca específica, consulte a seção Política padrão de retirada, reserva e devolução abaixo.
-
-        Se você quiser ter um limite de reserva rígido, independente da categoria de usuário, do tipo de item e em todas as bibliotecas, consulte a preferência do sistema maxreserves .
-
-        Você também pode definir um limite diário para o número de reservas que um cliente pode fazer.
-
-        Enquanto as duas configurações anteriores limitam as retenções que podem ser colocadas em vários registros, a próxima configuração é usada para limitar o número de retenções que podem ser colocadas em um registro ao mesmo tempo. Por exemplo, para livros de ficção, você pode querer permitir que apenas um item seja colocado em espera ao mesmo tempo pelo mesmo usuário. Mas para seriados onde os itens representam edições diferentes, mais de uma espera ao mesmo tempo é aceitável.
-
-        Observação
-
-        Se isso for definido como um número maior que 1, mas não Ilimitado, a equipe terá a opção de colocar várias reservas de uma vez ao colocar uma reserva no próximo item disponível na interface da equipe.
-
-        Em seguida, você pode decidir como a disponibilidade dos itens influencia a capacidade de fazer uma reserva. A opção 'Nas reservas de prateleira permitidas' tem três configurações:
-
-        Sim: Isso permitirá colocar itens em espera a qualquer momento. Não importa se eles estão disponíveis ou retirados.
-
-        Se algum estiver indisponível: Isso permitirá colocar uma reserva assim que um ou mais itens do registro forem retirados. Não importa se ainda há um ou mais itens disponíveis na prateleira.
-
-        Se todos indisponíveis: Isso permitirá colocar uma reserva assim que todos os itens no registro forem retirados que poderiam preencher a reserva. Isso é especialmente útil para bibliotecas que não oferecem o serviço de retirar itens colocados em reserva da prateleira para os usuários.
+        <ul>
+          <li>Sim: Isso permitirá colocar itens em espera a qualquer momento. Não importa se eles estão disponíveis ou retirados.</li>
+          <li>Se algum estiver indisponível: Isso permitirá colocar uma reserva assim que um ou mais itens do registro forem retirados. Não importa se ainda há um ou mais itens disponíveis na prateleira.</li>
+          <li>Se todos indisponíveis: Isso permitirá colocar uma reserva assim que todos os itens no registro forem retirados que poderiam preencher a reserva. Isso é especialmente útil para bibliotecas que não oferecem o serviço de retirar itens colocados em reserva da prateleira para os usuários.</li>
+        </ul>
 
         Em 'OPAC item level hold' você pode decidir se os usuários têm permissão para colocar itens específicos de reserva no tipo de item em questão. As opções são:
 
@@ -244,7 +240,7 @@
 
         Força: permitirá que os usuários escolham apenas um item específico.
 
-        Se você deseja permitir que os usuários desta categoria possam fazer solicitações de artigos sobre itens deste tipo, escolha uma opção na coluna 'Solicitações de artigos'
+        Se você deseja permitir que os usuários desta categoria possam fazer solicitações de artigos sobre itens deste tipo, escolha uma opção no campo 'Solicitações de artigos'
 
         Não: os patrocinadores desta categoria não poderão fazer solicitações de artigos sobre itens deste tipo
 
@@ -256,7 +252,7 @@
 
         Aviso
 
-        Esta coluna só aparecerá se a preferência do sistema ArticleRequests estiver habilitada.
+        Este campo só aparecerá se a preferência do sistema ArticleRequests estiver habilitada.
 
         Se você quiser usar a funcionalidade de solicitação de artigo, precisará habilitá-la usando a preferência do sistema ArticleRequests e configurar o formulário usando as outras preferências relacionadas.
 
@@ -308,3 +304,17 @@
 
 </body>
 </html>
+
+A principal diferença entre recall e hold no contexto de bibliotecas está na situação do item e na ação necessária por parte do usuário:
+
+Recall (recall ou "recuperação"):
+
+Um recall ocorre quando um item que já está emprestado a um usuário é solicitado por outro usuário. Nesse caso, o sistema "recupera" o item antecipadamente, pedindo ao usuário atual que devolva o item antes do vencimento original, geralmente com um novo prazo de devolução. Isso dá ao segundo usuário a prioridade de uso do item após o recall.
+Exemplo: Se um livro está emprestado e outro usuário o solicita com um recall, o primeiro usuário é notificado e tem que devolver o livro mais cedo do que o esperado.
+Hold (reserva):
+
+Um hold é uma reserva de um item que atualmente está disponível ou emprestado. O sistema coloca o item "em espera" para o usuário que o solicitou. No entanto, se o item estiver emprestado, o usuário não precisa devolvê-lo antes do vencimento original. A reserva é apenas uma fila, e o próximo na fila só terá acesso ao item quando ele for devolvido dentro do prazo normal.
+Exemplo: Se um livro está emprestado e outro usuário coloca uma reserva (hold) nele, o primeiro usuário mantém o livro até a data original de devolução, e o segundo usuário é notificado para pegar o livro quando ele estiver disponível.
+Resumo:
+Recall: O item é solicitado de volta antes do prazo original de devolução.
+Hold: O item é reservado, mas o usuário atual mantém o item até o vencimento original.
