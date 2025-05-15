@@ -451,7 +451,39 @@
  
     <!-- Função JavaScript ######################################################-->
     <script> 
-        function copyCode(button) {  var codeElement = button.nextElementSibling; var codeToCopy = codeElement.textContent;       var tempTextArea = document.createElement('textarea');  tempTextArea.value = codeToCopy; document.body.appendChild(tempTextArea);   tempTextArea.select(); document.execCommand('copy'); document.body.removeChild(tempTextArea); button.textContent = button.getAttribute('data-label-copied'); button.classList.add('copied'); setTimeout(function() { button.textContent = button.getAttribute('data-label-copy');  button.classList.remove('copied'); }, 2000); } window.onload = function() { var button = document.querySelector(".butão-copiar");  button.onclick = function() {   copyCode(button);   };  }; 
+        function copyCode(button) {
+        var codeElement = button.nextElementSibling;
+        var codeToCopy = codeElement.textContent;
+
+        // Copia o conteúdo
+        var tempTextArea = document.createElement('textarea');
+        tempTextArea.value = codeToCopy;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+
+        // Atualiza o botão
+        button.textContent = button.getAttribute('data-label-copied');
+        button.classList.add('copied');
+
+        // Altera as cores da caixa de código
+        codeElement.style.backgroundColor = 'white';
+        codeElement.style.color = 'black';
+
+        // (Opcional) Reverte texto do botão após 2 segundos
+        setTimeout(function () {
+          button.textContent = button.getAttribute('data-label-copy');
+          button.classList.remove('copied');
+        }, 2000);
+      }
+
+      window.onload = function () {
+        var button = document.querySelector(".butão-copiar");
+        button.onclick = function () {
+          copyCode(button);
+        };
+      };
     </script>
 </body>
 </html>

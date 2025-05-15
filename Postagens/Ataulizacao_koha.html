@@ -1,106 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Atualizando o Koha</title>
-  <link rel="stylesheet" href="estilo/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Atualizando o Koha</title>
+    <link rel="stylesheet" href="estilo/style.css">
+  </head>
+  <body>
+    <!--Tabela da versão do koha e descrição do tutorial ou postagem -->
+     <table id="versao"> 
+      <tr>
+         <th>Versões do Koha:</th>
+         <td>22.11; 23.11; 24.05; 24.11</td>
+      </tr>
+      <tr>
+        <th>Sistemas operacionais Linux testados:</th>
+        <td>Debina; Ubuntu e Mint</td>
+        </tr>
+      <tr>
+        <th>Resumo</th>
+        <td>Este tutorial mostra como atualizar o sistema Koha em servidores Debian/Ubuntu usando os pacotes oficiais</td>
+      </tr>
+    </table><br>
+    <div class="corpo"> <!-- Div corpo da postagem -->
 
-    <h1>Tutorial: Atualizando o Koha</h1>
-
-    <p>Este tutorial mostra como atualizar o sistema Koha em servidores Debian/Ubuntu usando os pacotes oficiais.</p>
-  
-    <p class="passos">1. Atualizar as informações de pacotes</p>
-    <p>Antes de iniciar qualquer atualização, atualize os repositórios do sistema:</p>
-    <pre class="caixa-de-codigo">
-      <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-      <p class="codigo">sudo apt update</p>
-    </pre>
-  
-    <p class="passos">2. Verificar versão instalada e disponível</p>
-    <p>Use o comando abaixo para ver a versão atual do Koha e qual versão está disponível para atualização:</p>
-    <pre class="caixa-de-codigo">
-      <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-      <p class="codigo">apt-cache policy koha-common | grep -E 'Instalado|Candidato'</p>
-    </pre>
-  
-    <p>Saída esperada:</p>
-    <pre class="caixa-de-codigo">
-      <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-      <p class="codigo">Instalado: 21.05.01-1 <br>Candidato: 21.05.09-1</p>
-    </pre>
-  
-    <p class="passos">3. Atualizando para uma versão menor (ex: 21.05.01 → 21.05.09)</p>
-    <p>Se você já está seguindo uma versão específica conforme recomendado, basta executar:</p>
-    <pre class="caixa-de-codigo">
-      <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-      <p class="codigo">sudo apt upgrade</p>
-    </pre>
-  
-    <div class="note">
-      <strong>Nota:</strong> Este comando atualizará também outros pacotes do sistema que estejam desatualizados.
-    </div>
-  
-    <div class="important">
-      <strong>Atenção:</strong> Se o Elasticsearch for atualizado, você deve reinstalar o plugin <code>analysis-icu</code> conforme a seção de instalação do Elasticsearch.
-    </div>
-  
-    <p class="passos">4. Atualizando para uma versão maior (ex: 22.05.x → 22.11.x)</p>
-  
-    <p><b>Para uma atualização entre versões maiores, você precisa editar o repositório do Koha:</b></p>
-  
-      <p>4.1 Abra o arquivo de repositórios do Koha:</p>
-      <pre class="caixa-de-codigo">
-        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-        <p class="codigo">sudo nano /etc/apt/sources.list.d/koha.list</p>
-      </pre>
-  
-      <p>4.2 Modifique para apontar para a nova versão desejada (por número ou codinome).</p>
-      <p>Atualize novamente os pacotes:</p>
+      <h1>Atualizando o Koha</h1>
+         
+      <p class="passos">1. Atualizar as informações de pacotes</p>
+      <p>Antes de iniciar qualquer atualização, atualize os repositórios do sistema:</p>
       <pre class="caixa-de-codigo">
         <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
         <p class="codigo">sudo apt update</p>
       </pre>
-  
-      <p>4.3 Verifique as versões novamente:</p>
+    
+      <p class="passos">2. Verificar versão instalada e disponível</p>
+      <p>Use o comando abaixo para ver a versão atual do Koha e qual versão está disponível para atualização:</p>
       <pre class="caixa-de-codigo">
         <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-        <p class="codigo">apt-cache policy koha-common | grep -E 'Installed|Candidate'</p>
+        <p class="codigo">apt-cache policy koha-common | grep -E 'Instalado|Candidato'</p>
       </pre>
-  
-      <p>4.4 Se a versão desejada aparecer como 'Candidate', atualize com:</p>
+    
+      <p>Saída esperada:</p>
+      <pre class="caixa-de-codigo">
+        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+        <p class="codigo">Instalado: 21.05.01-1 <br>Candidato: 21.05.09-1</p>
+      </pre>
+    
+      <p class="passos">3. Atualizando para uma versão menor (ex: 21.05.01 → 21.05.09)</p>
+      <p>Se você já está seguindo uma versão específica conforme recomendado, basta executar:</p>
       <pre class="caixa-de-codigo">
         <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
         <p class="codigo">sudo apt upgrade</p>
       </pre>
-  
-      <p>4.5 Se o pacote estiver retido (held back), use:</p>
+    
+      <div class="note">
+        <strong>Nota:</strong> Este comando atualizará também outros pacotes do sistema que estejam desatualizados.
+      </div>
+    
+      <div class="important">
+        <strong>Atenção:</strong> Se o Elasticsearch for atualizado, você deve reinstalar o plugin <code>analysis-icu</code> conforme a seção de instalação do Elasticsearch.
+      </div>
+    
+      <p class="passos">4. Atualizando para uma versão maior (ex: 22.05.x → 22.11.x)</p>
+    
+      <p><b>Para uma atualização entre versões maiores, você precisa editar o repositório do Koha:</b></p>
+    
+        <p>4.1 Abra o arquivo de repositórios do Koha:</p>
+        <pre class="caixa-de-codigo">
+          <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+          <p class="codigo">sudo nano /etc/apt/sources.list.d/koha.list</p>
+        </pre>
+    
+        <p>4.2 Modifique para apontar para a nova versão desejada (por número ou codinome).</p>
+        <p>Atualize novamente os pacotes:</p>
+        <pre class="caixa-de-codigo">
+          <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+          <p class="codigo">sudo apt update</p>
+        </pre>
+    
+        <p>4.3 Verifique as versões novamente:</p>
+        <pre class="caixa-de-codigo">
+          <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+          <p class="codigo">apt-cache policy koha-common | grep -E 'Installed|Candidate'</p>
+        </pre>
+    
+        <p>4.4 Se a versão desejada aparecer como 'Candidate', atualize com:</p>
+        <pre class="caixa-de-codigo">
+          <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+          <p class="codigo">sudo apt upgrade</p>
+        </pre>
+    
+        <p>4.5 Se o pacote estiver retido (held back), use:</p>
+        <pre class="caixa-de-codigo">
+          <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+          <p class="codigo">sudo apt dist-upgrade</p>
+        </pre>
+      
+    
+      <div class="important">
+        <strong>Atenção:</strong> Sempre revise a saída do terminal para possíveis erros, especialmente sobre a atualização do banco de dados do Koha.
+      </div>
+    
+      <p class="passos">5. Confirmar se o pacote foi instalado com sucesso</p>
+      <p>Use este comando para confirmar que o Koha foi instalado corretamente:</p>
       <pre class="caixa-de-codigo">
         <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-        <p class="codigo">sudo apt dist-upgrade</p>
+        <p class="codigo">dpkg -s koha-common | grep Status</p>
+      </pre>
+      <p>Saída esperada:</p>
+      <pre class="caixa-de-codigo">
+        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+        <p class="codigo">Status: install ok installed</p>
       </pre>
     
-  
-    <div class="important">
-      <strong>Atenção:</strong> Sempre revise a saída do terminal para possíveis erros, especialmente sobre a atualização do banco de dados do Koha.
-    </div>
-  
-    <p class="passos">5. Confirmar se o pacote foi instalado com sucesso</p>
-    <p>Use este comando para confirmar que o Koha foi instalado corretamente:</p>
-    <pre class="caixa-de-codigo">
-      <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-      <p class="codigo">dpkg -s koha-common | grep Status</p>
-    </pre>
-    <p>Saída esperada:</p>
-    <pre class="caixa-de-codigo">
-      <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-      <p class="codigo">Status: install ok installed</p>
-    </pre>
-  
-    <p class="passos">Conclusão</p>
-    <p>Com esses passos, você garante uma atualização segura e eficaz do seu sistema Koha. Lembre-se de sempre fazer um backup antes de realizar grandes mudanças no sistema.</p>
+      <p class="passos">Conclusão</p>
+      <p>Com esses passos, você garante uma atualização segura e eficaz do seu sistema Koha. Lembre-se de sempre fazer um backup antes de realizar grandes mudanças no sistema.</p>
+    
+    </div> <!-- Fim da div corpo da postagem -->
+    <!-- Função JavaScript ######################################################-->
+    <script>       
+      function copyCode(button) {
+        var codeElement = button.nextElementSibling;
+        var codeToCopy = codeElement.textContent;
+
+        // Copia o conteúdo
+        var tempTextArea = document.createElement('textarea');
+        tempTextArea.value = codeToCopy;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+
+        // Atualiza o botão
+        button.textContent = button.getAttribute('data-label-copied');
+        button.classList.add('copied');
+
+        // Altera as cores da caixa de código
+        codeElement.style.backgroundColor = 'white';
+        codeElement.style.color = 'black';
+
+        // (Opcional) Reverte texto do botão após 2 segundos
+        setTimeout(function () {
+          button.textContent = button.getAttribute('data-label-copy');
+          button.classList.remove('copied');
+        }, 2000);
+      }
+
+      window.onload = function () {
+        var button = document.querySelector(".butão-copiar");
+        button.onclick = function () {
+          copyCode(button);
+        };
+      };
+    </script>
   
 
-</body>
+  </body>
 </html>
