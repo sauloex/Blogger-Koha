@@ -15,6 +15,7 @@
 .corpo p{
   text-align: justify;/* Alinhamento do parágrafo */
   line-height: 1.5; /* Espaçamento entre as linhas */
+  margin: 5px;
 }
 
 .cabecalho {
@@ -36,22 +37,22 @@
   }
 
   /* border: 1px solid black; */
-  #versao th,td {
+
+#versao th,td {
     border-bottom: 1px solid black;
     padding: 10px;
     text-align: left;
     
   }
-  #versao th {
+ #versao th {
     text-align: right;
-}
+  }
 #versao tr:hover {
     background-color: #408540;
     color: white;
-}
+  }
 
- /* css para a lista */
-   
+ /* css para a lista */   
    li {
     margin: 10px 0;
   }
@@ -75,39 +76,62 @@
   .passos {
     font-weight:bold;
     background: linear-gradient(to right, #51af51, transparent);
-     }
+    margin-top: 10px!important;
+  }
+
+  .parte {
+    font-weight:bold;
+    color: #FFFFF0;
+    background: #4B0082;
+    /* background: linear-gradient(to right, #4B0082, transparent); */
+    text-align: center;
+    font-size: 21.5pt;
+
+  }
+  
+  .Obs {
+      background-color: #F0F8FF;
+      border: 1px solid #000000;
+      padding: 5px;
+      border-radius: 5px;   
+    }
+
+  .Obs p {
+      margin: 0px;
+    }
   
   /* Css para div código */
   .caixa-de-codigo {
-  display: flex;
-  position: relative; 
-  width: auto;
-  background-color: #1C1C1C;
-  color: white;
-  border: 2px solid #408540;;
-  padding: 2px 5px;
-  border-radius: 4px;
-  white-space: pre-wrap;
-  }
+    display: flex;
+    position: relative; 
+    width: auto;
+    background-color: #1C1C1C;
+    color: white;
+    border: 2px solid #408540;;
+    padding: 10px 8px 2px 5px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    margin: 5px;
+   }
 
   .butão-copiar {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  background-color: #408540;
-  color: white; 
-  font-size: 10pt; 
-  font-weight: bold; 
-  padding: 5px 10px; 
-  border: none; 
-  border-radius: 4px; 
-  cursor: pointer;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: #408540;
+    color: white; 
+    font-size: 10pt; 
+    font-weight: bold; 
+    padding: 5px 10px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer;
   }
 
   .codigo {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 12pt;
-  padding-top: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    padding-top: 14px;
   }
 
     /* Css para div OBS */
@@ -167,4 +191,38 @@ caption {
 /* Estilo para a célula da versão LTS */
 .Tipo1 td b {
   color: #008000; /* Verde */
+}
+
+/* Estilo explicação entenda o código */
+<style>
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-content {
+  visibility: hidden;
+  width: 90vw; /* 90% da largura da janela */
+  max-width: 800px;
+  background-color: #F7F8E0;
+  color: #333;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed; /* fixa em relação à janela */
+  top: 50%; /* distância do topo da janela */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* evita clique acidental */
+}
+
+.tooltip-wrapper:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
