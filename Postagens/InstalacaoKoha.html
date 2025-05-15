@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalação Koha</title>
+    <link rel="stylesheet" href="estilo/style.css">
+</head>
+<body>
+
+     <!--Tabela da versão do koha e descrição do tutorial ou postagem -->
+     <table id="versao"> 
+        <tr>
+          <th>Versões do Koha:</th>
+          <td>22.11; 23.11; 24.05; 24.11</td>
+        </tr>
+        <tr>
+          <th>Sistemas operacionais Linux testados:</th>
+          <td>Debina; Ubuntu e Mint</td>
+        </tr>
+        <tr>
+          <th>Resumo</th>
+          <td>Neste tutorial você aprenderá realizar a instalação do Koha de forma prática  e rápida. Siga os passos conforme sequência abaixo</td>
+        </tr>
+    </table><br>
+    
+    <div class="corpo"> <!-- Div corpo da postagem -->
+        <h1>INSTALAÇÃO DO KOHA</h1> 
+        
+        <div class="Obs"> 
+            <p>Este tutorial foi elaborado para instalação do KOHA no Sistema Operacional (SO) Ubuntu 24,04, mas seve para as demais distribuições derivadas do Debian. Alguns comandos podem apresentar uma sintaxe diferente no Debian. Caso não funcionem, faça as alterações consultando a documentação e os manuais do Debian. Se você (ou sua instituição) ainda não tenha uma dessas  distros Linux instalada no computador ou servidor que hospedará o Koha, veja tutorias no Youtube ou em outros sites para instalação do SO.</p>
+        </div>
+        <h2 class="parte">Como usar este tutorial?</h2>
+
+            <p>Todos os comandos, precedidos do caractere ‘#’, devem ser digitados no prompt de comandos ‘Terminal’ (semelhante ao cmd no Windows). Copie os caracteres depois do ‘#’ e cole no terminal para facilitar.</p>
+        
+        <h2 class="parte">Parte 1 – Instalação e configuração no servidor Ubuntu</h2>
+
+            <p>Os passos desta parte 1 devem ser executados no computador (ou servidor) que hospedará o Koha. Na maioria dos casos é feito por profissionais de TI, porém seguindo os passos fidedignamente qualquer pessoa com conhecimentos mínimos de informática pode instalar o Koha. E, atualmente temos poderosas Inteligências Artificias (IAs) que podem ajudar nesse processo. </p>
+
+            <p class="passos">Passo 1 - Abrir o ‘Terminal’</p> <!-- ################################################################## -->
+       
+                <p>1º: Para abrir o aplicativo ‘Terminal’ faça por: </p> 
+
+                <p> Atalho do teclado: Pressione Ctrl + Alt + T (Essa é a forma mais rápida e funciona na maioria das distribuições Ubuntu.) ou</p>
+                <p>Menu de Aplicativos: Clique no ícone do Ubuntu (ou no botão "Atividades" no canto superior esquerdo). Digite Terminal na busca e clique no aplicativo.</p>
+
+            <p class="passos">Passo 2 - Atualizar a lista de pacotes disponíveis/ Baixar e instalar as atualizações necessárias</p><!--## -->
+
+                <p>1º:  Atualizar a lista de pacotes do seu sistema Linux:</p>
+                <!-- Primeiro código #############-->
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo apt update</p>
+                </pre>
+         
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        Esse comando é usado para atualizar a lista de pacotes disponíveis a partir dos repositórios configurados no seu sistema. Quando o ‘sudo apt update’ é executado, o sistema verifica se há versões mais recentes dos pacotes instalados e atualiza a lista local com essas informações. Esse comando não instala pacotes, apenas atualiza a lista. Recomenda-se usá-lo antes de instalar ou atualizar qualquer pacote.
+                    </div>
+                </span>
+
+                <p>2º: Instalar as versões mais recentes dos pacotes:</p>
+                 <!-- Segundo código #############-->
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo apt upgradee</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        Após executar o ‘apt update’, o comando ‘apt upgrade’ instala as versões mais recentes dos pacotes que já estão instalados, caso uma nova versão esteja disponível. Dever ser executado para manter o seu sistema atualizado e seguro.              
+                    </div>
+                </span>
+    
+            <p class="passos">Passo 3 - Configurar as chaves para os repositórios de pacotes do Koha</p><!-- ########################### -->
+                <p>Antes de instalar o Koha, é importante garantir a integridade e autenticidade dos pacotes que serão baixados. Para isso, configuramos as chaves GPG, que permitem verificar se os pacotes são legítimos e não foram adulterados ou alterados por terceiros.</p>
+            
+                <p>1º: Instalar pacotes essenciais:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo apt install apt-transport-https ca-certificates curl</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        Esse comando instala pacotes necessários para o seu sistema conseguir baixar e configurar repositórios HTTPS de forma segura.       
+                    </div>
+                </span>
+              
+                <p>2º: Criar diretório para armazenar as chaves de repositórios:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo mkdir -p --mode=0755 /etc/apt/keyrings</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        O comando cria a pasta ‘/etc/apt/keyrings com permissões 0755’. É nessa pasta que as chaves públicas de repositórios (como a chave GPG do Koha) serão armazenadas. A opção -p garante que o diretório seja criado mesmo que os diretórios pai não existam, e a opção --mode=0755 define permissões para que o diretório seja legível e acessível apenas por usuários autorizados. Isso ajuda a manter o sistema organizado e seguro, já que as chaves são fundamentais para validar a autenticidade dos pacotes baixados.       
+                    </div>
+                </span>
+            
+                <p>3º: Baixar a chave GPG do repositório Koha:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo curl -fsSL https://debian.koha-community.org/koha/gpg.asc -o /etc/apt/keyrings/koha.asc</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        Esse comando baixa a chave GPG do repositório Koha e armazena em ‘/etc/apt/keyrings/koha.asc’. Esse comando usa o ‘curl’ para baixar a chave GPG pública do repositório do Koha, que é usada para verificar a autenticidade dos pacotes do Koha. A chave é salva no diretório ‘/etc/apt/keyrings’ com o nome ‘koha.asc’. A chave GPG é importante porque ela permite que o APT valide os pacotes que serão baixados do repositório do Koha, garantindo que os pacotes não foram alterados ou corrompidos.
+                    </div>
+                </span>      
+        
+                <p>4º:  Atualizar a lista de pacotes e instale as atualizações novamente:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo apt update && sudo apt upgrade</p>
+                </pre>
+        
+            <p class="passos">Passo 4 - Adicionar  os pacotes da versão que deseja instalar</p> <!-- ############################### -->
+
+                <p>Para versão do Koha 22.11 (LTS):</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">echo 'deb [signed-by=/etc/apt/keyrings/koha.asc] https://debian.koha-community.org/koha 22.11 main' | sudo tee /etc/apt/sources.list.d/koha.list</p>
+                </pre>
+
+                <p>Para versão do Koha 23.11:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">echo 'deb [signed-by=/etc/apt/keyrings/koha.asc] https://debian.koha-community.org/koha 23.11 main' | sudo tee /etc/apt/sources.list.d/koha.list</p>
+                </pre>
+
+                <p>Para versão do Koha 24.05:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">echo 'deb [signed-by=/etc/apt/keyrings/koha.asc] https://debian.koha-community.org/koha 24.05 main' | sudo tee /etc/apt/sources.list.d/koha.list</p>
+                </pre>
+
+                <p>Para versão do Koha 24.11:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">echo 'deb [signed-by=/etc/apt/keyrings/koha.asc] https://debian.koha-community.org/koha 24.11 main' | sudo tee /etc/apt/sources.list.d/koha.list</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        O comando adiciona o repositório do Koha à lista de fontes do APT. O repositório é adicionado ao arquivo ‘/etc/apt/sources.list.d/koha.list’. A opção ‘signed-by’ especifica a chave GPG que foi baixada anteriormente, garantindo que os pacotes baixados desse repositório sejam verificados quanto à autenticidade. Isso é importante para garantir a segurança do sistema e evitar a instalação de pacotes maliciosos.
+                    </div>
+                </span>
+
+                <p>Atualizar a lista de pacotes novamente:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo apt update</p>
+                </pre>
+        
+            <p class="passos">PASSO 5 - Instalar o Apache 2</p><!-- ################################################################## -->
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo apt install apache2</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                        <div class="tooltip-content">
+                            O comando ‘sudo apt install apache2’ instala o servidor web Apache2 no seu sistema. O Apache2 é um dos servidores web mais populares e amplamente utilizados em sistemas Linux. O Apache2 serve para hospedar sites e aplicações web, incluindo a interface do Koha. O software usa o Apache2 para hospedar sua interface web, permitindo que os usuários acessem o sistema de qualquer navegador. Portanto, antes de instalar e configurar o Koha, o Apache2 deve ser instalado e configurado no servidor.
+                        </div>
+                </span>
+
+            <p class="passos">PASSO 6 - Instalar o banco de dados MariaDB</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo apt install mariadb-server</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                        <div class="tooltip-content">
+                            Esse comando instala o MariaDB, que é um Sistema de Gerenciamento de Banco de Dados (SGBD) de código aberto. O MariaDB é uma versão compatível com o MySQL e é frequentemente preferido em ambientes de software livre devido. O Koha, como sistema de gestão de bibliotecas, precisa de um banco de dados para armazenar informações, como registros de livros e periódicos, usuários,  circulação de materiais , etc. 
+                        </div>
+                </span>     
+            
+            <p class="passos">PASSO 7 - Instalar o pacote koha-common</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">#sudo apt install koha-common</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                        <div class="tooltip-content">
+                            Esse comando instala o pacote koha-common. Este pacote é fundamental para a instalação do Koha, pois ele inclui todos os arquivos e configurações essenciais que o sistema precisa para funcionar corretamente. Isso inclui, por exemplo, arquivos de configuração do servidor web, do banco de dados e scripts necessários para o funcionamento básico do Koha.    
+                        </div>
+                </span>    
+            
+            <p class="passos">PASSO 8 - Configurar portas de acesso ao Koha</p>
+
+            <p>1º: Abra o arquivo koha-sites.conf com editor de texto ‘Gedit’</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo gedit /etc/koha/koha-sites.conf</p>
+                </pre>
+                <br>                  
+                <div class="Obs">
+                    <p>Aqui utilizou-se o editor de texto ‘Gedit’ que já vem instalado no próprio Ubuntu e Debian (Interface Gnome), porém pode ser usado outros  com por exemplo o ‘Pluma’, ‘Xed’, ‘Leafpad’, ‘Mousepad’, ‘Nano’ etc.</p>  
+                </div>
+                
+                <p>2º: Procure por INTRAPORT e OPACPORT e altere as seguintes informações:</p>
+                
+                <p>INTRAPORT=”80” para INTRAPORT=8080</p>
+                
+                <p>OPACPORT=”80“ para OPACPORT=888</p>                     
+                <div class="Obs">
+                    <p>INTRAPORT  é porta que servidor utilizará para liberar acesso a interface administrativa do Koha.  OPACPORT  é porta que servidor utilizará para libera acesso a interface dos usuários do Koha. Pode-se utilizar outros números de portas, a depender das portas utilizadas em outros serviços na rede. Porém, não é possível utilizar o mesmo número para ambas interfaces. Caso as portas ‘8080’ e ‘8888’  estejam sendo usadas por alguns serviços da rede use outras disponíveis. Se possível peça ajuda para algum profissional de TI para verificar as portas disponíveis na rede. Mais adiante, será preciso configuar o Apache para liberar o acesso a essas portas (vide askdjfasjd) </p>
+                </div>
+
+                <img src="" alt="">
+                <p>3º: Salvar as alterações no arquivo e feche o editor </p>
+                    
+                <p>4º Reiniciar o servidor Apache para aplicar as alterações: </p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo service apache2 restart</p>
+                </pre>   
+        
+            <p class="passos">Passo 9 - Configurar o Apache: habilitar modo REWRITE e a execução de CGI no apache</p>
+
+                <p>1ºAtivar o módulo CGI no Apache:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo a2enmod cgi</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        O comando ‘a2enmod’ é utilizado para habilitar módulos no Apache, e ‘cgi’ se refere ao módulo Common Gateway Interface. O módulo CGI permite que o Apache execute scripts, como os escritos em Perl, PHP, ou outros, diretamente no servidor. Ele é essencial para rodar scripts dinâmicos no Koha, que usa CGI para interagir com o servidor.
+                    </div>
+                </span>
+
+                <p>2ºAtivar o módulo de reescrita (mod_rewrite) no Apache:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo a2enmod rewrite</p> 
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        O módulo rewrite do Apache permite reescrever URLs, ou seja, modificar as URLs que os usuários solicitam para outro formato antes que o servidor as processe. No Koha, o mod_rewrite é frequentemente usado para criar URLs amigáveis e redirecionar corretamente as requisições de páginas, melhorando a estrutura de navegação e acessibilidade do sistema.
+                    </div>
+                </span>
+
+                <p>3ºAtivar os módulos headers e proxy_http no Apache:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo a2enmod headers proxy_http</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        O módulo headers permite ao Apache manipular cabeçalhos HTTP. Ele é importante para definir ou modifica cabeçalhos de resposta do servidor, como configurações de segurança (CORS, por exemplo), que podem ser necessárias para o correto funcionamento de certas funcionalidades do Koha. proxy_http: O módulo proxy_http permite que o Apache atue como um proxy reverso, encaminhando requisições HTTP para outro servidor. Isso pode ser útil se o Koha for configurado para usar um servidor de backend separado ou outro serviço.
+                    </div>
+                </span>
+
+                <p>4º Configurar o Apache para escutar as portas para interface administrativa e para o OPAC:</p>
+                    <pre class="caixa-de-codigo">
+                        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                        <p class="codigo"># sudo nano /etc/apache2/ports.conf</p>
+                    </pre>
+                
+                <p>Será aberta a janela a segui </p>
+                <img src="" alt="imagem do arquivo ports.conf">
+
+                <p>Acrescente após ‘Listen 80’:</p>
+                <p>Listen 8080	(Porta escolhida no exemplo para interface administrativa)</p>
+                <p>Listen 8888	(Porta escolhida no exemplo para o OPAC)</p>    
+
+                <img src="" alt="imagem 02 do arquivo ports.conf">
+
+                <p>5º Reiniciar o Apache para aplicar as alterações: </p>
+                    <pre class="caixa-de-codigo">
+                        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                        <p class="codigo">sudo service apache2 restart</p>
+                    </pre>
+            
+            <p class="passos">Passo 10 - Criar uma instância do Koha no Banco de Dados</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo koha-create --create-db nomebiblioteca</p>
+                </pre>
+                              
+                <div class="Obs">                                     
+                    <p>Esse comando cria uma nova instância do Koha no servidor (onde ‘nomebiblioteca’ deve ser substituído pelo nome da sua biblioteca) e cria também o banco de dados necessário para a instância, garantindo que todos os arquivos de configuração e banco de dados sejam preparados.</p><br>
+                    
+                    <p>Aconselha-se a colocar nomes pequenos se a instalação for apenas para uma biblioteca e genéricos se o Koha for tender várias bibliotecas. Se for usar nomes compostos, não coloque espaços, ao invés disso use ‘_’ (underline) ligando as palavras.</p><br>                
+                    
+                    <p>
+                        Exemplos:
+                        Biblioteca Municipal de Santa Rosa = ‘Santarosa, ou Bmsr, etc’<br>
+                        Sistemas de Biblioteca do Vale Beltrando = ‘Sibivb, ou, Beltrano, etc’
+                    </p>
+                    
+                    <p>Anote o nome da biblioteca e senha gerada  automaticamente da instância, pois ela será necessária para fazer o login no instalador web (passo 15)</p><br>
+                    
+                    <p>
+                        Caso tenha esquecido o ‘nome da biblioteca’ pode resgatá-lo com seguinte 
+                        Digite no ‘Terminal’ e aperte ‘Enter’:
+                    </p>
+                        <pre class="caixa-de-codigo">
+                            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                            <p class="codigo">koha- list</p>
+                        </pre>
+                    
+                    <p>O comando listará a(s) instância(s) instalada(s) no servidor</p>
+                    
+                    <p>Para visualizar a senha, digite no ‘Terminal’ e aperte ‘Enter’:</p>
+                        <pre class="caixa-de-codigo">
+                            <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                            <p class="codigo">sudo koha-passwd nomebiblioteca</p>
+                        </pre>
+                    
+                    <p>Não esqueça de alterar 'nomebiblioteca' pelo nome da sua instância. Este comando revelará a senha da sua instância koha</p>              
+                </div>
+
+            <p class="passos">Passo 11 - Definir um módulo do Apache para trabalhos do koha-plack</p>
+                <p>1º Habilitar a instânica</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">#sudo koha-plack --enable nomebiblioteca</p>
+                </pre>
+
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        O Koha usa o Plack como servidor de aplicação para gerenciar as requisições da web. O comando acima ativa esse servidor para a instância ‘nomebiblioteca’
+                    </div>
+                </span>    
+                                 
+                <p>2º Inciar a execução da instância do Koha:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">#sudo koha-plack --start nomebiblioteca</p>
+                </pre>
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        O comando acima inicia o servidor Plack para a instância ‘nomebiblioteca’. Isso significa que o Koha estará pronto para receber requisições e acessível pela interface web.
+                    </div>
+                </span>
+                <p>3º: Reiniciar o Apache para aplicar as alterações:</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">#sudo service apache2 restart</p>
+                </pre>
+
+            <p class="passos">Passo 12 - Instalar a tradução do Português do Brasil</p>
+                <pre class="caixa-de-codigo">
+                    <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                    <p class="codigo">sudo koha-translate --install pt-BR</p>
+                </pre>
+                <span class="tooltip-wrapper">
+                    <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                    <div class="tooltip-content">
+                        O comando instala a tradução do Koha para o idioma Português do Brasil. O Koha suporta uma variedade de idiomas, e este comando é útil para garantir que a interface do Koha seja exibida em nosso idioma. Quando você instala essa tradução, todas as mensagens, menus e outras partes da interface gráfica do Koha serão exibidos no idioma selecionado. Isto facilitará muito os demais passos de instalação e configuração do Koha.
+                    </div>
+                </span>
+
+            <p class="passos">Passo 13 - Configurar  módulos e sites do Apache</p>
+
+                <p>1º Desabilitar o site padrão do Apache:</p>
+                    <pre class="caixa-de-codigo">
+                        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                        <p class="codigo">sudo a2dissite 000-default
+                    </pre>
+                    <span class="tooltip-wrapper">
+                        <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                        <div class="tooltip-content">
+                            Esse comando desabilita o site padrão do Apache, chamado 000-default, que é configurado por padrão ao instalar o Apache. O Apache usa arquivos de configuração para determinar como ele deve servir sites. O arquivo ‘000-default.conf’ é a configuração padrão e é geralmente usada como o site de "fallback" (site padrão) quando nenhum outro site é especificado. Isso ajuda a garantir que a configuração do Koha ou de outros sites seja priorizada.
+                            
+                        </div>
+                    </span>              
+                <p>2º Habilitar o módulo Deflate do Apache:</p>
+                    <pre class="caixa-de-codigo">
+                        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                        <p class="codigo">sudo a2enmod deflate</p>
+                    </pre>
+                    <span class="tooltip-wrapper">
+                        <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                        <div class="tooltip-content">
+                            Esse comando habilita o módulo ‘deflate’ do Apache, que é utilizado para compressão de conteúdo HTTP. A compressão de conteúdo ajuda a reduzir o tamanho dos arquivos transmitidos entre o servidor e o cliente (navegador), o que melhora o tempo de carregamento e a eficiência na utilização da largura de banda. A compressão reduz a quantidade de dados que precisam ser transferidos pela rede, o que acelera o tempo de carregamento das páginas web.
+                        </div>
+                    </span>
+                <p>3º Habilitar o site do Apache para o Koha instalado:</p>
+                    <pre class="caixa-de-codigo">
+                        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                        <p class="codigo">sudo a2ensite nomebiblioteca</p>
+                    </pre>
+                    <span class="tooltip-wrapper">
+                        <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
+                        <div class="tooltip-content">
+                            O comando ‘a2ensite’ é utilizado para habilitar sites no Apache em sistemas baseados no Debian/Ubuntu. Quando você instala o Koha e configura seu servidor Apache, você cria um arquivo de configuração para o Koha, que é geralmente chamado de ‘nomebiblioteca’  (nome escolhido no passo 10). Quando você cria a configuração para o Koha, você precisa habilitar o site correspondente para que o Apache comece a processar as requisições para o Koha. Isso é essencial para que o Koha seja acessível via navegador.
+                        </div>
+                    </span>
+                <p>4º Reiniciar o Apache2 para aplicar as alterações:</p>
+                    <pre class="caixa-de-codigo">
+                        <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
+                        <p class="codigo">sudo service apache2 restart</p>
+                    </pre>
+
+        <h2 class="parte">Parte 2 – Instalador  Web</h2>
+
+            <p>Os passos desta parte 2 deverão executados em navegador de internet (Google Chrome, Microsoft Edge, Mozila, Opera etc.). A comunidade recomenda usar o Mozila Firefox, pois o mesmo possui melhor desempenho e extensões específicas para o Koha. Esta parte poder ser realizado por profissionais de TI, porém sugere-se que Bibliotecários ou demais profissionais com conhecimentos de Biblioteconomia o façam ou auxiliem os TIs em todo o processo. </p>
+            
+            <p class="passos">Passo 14 -  Inciar a instalação do software pelo instador Web do Koha</p>
+
+                <p>1º Abra um navegador no computador ou servidor onde o Koha foi instalado e digite: http://localhost:8080</p>
+
+                <div class="Obs">
+                    <p>A porta ‘8080’ foi escolhida no passo 8. Se você escolheu outra porta, basta colocar.</p>
+                    <p>Exemplo: ‘http://localhosta:1024’</p>
+                    <p>Caso queira se conectar ao servidor de outra máquina via internet deverá usar o endereço IP da máquina em que foi instalado o Koha digitando (http://ipdamaquina:8080)</p>
+                    <p>Para saber o endereço ip do servidor que tem o koha instalado faça o  seguinte:</p>
+                    <p>Dite no terminal (Debian ou Ubuntu) onde o koha foi instalado '#hostname -I'</p>
+                    <p>Deve aparecer algo assim: ‘192.168.1.10’</p>
+                    
+                </div>
+
+                <p>Veja na imagem onde estará o número IP (neste caso é 192.168.0.27).</p>
+                <img src="" alt="imagem do IP da máquina onde o Koha foi instalado">
+
+                <p>
+                    Então deverá ser digitados na barra de endereço do Browser  http://localhost:8080 ou  http://ipdamaquina:8080 <br>
+                    Após isso, o navegador deverá apresentar as seguinte tela:
+                </p>
+                <img src="" alt="imagem do instalador web do Koha">               
+  
+                 
+        
+    </div>
+
+ 
+    <!-- Função JavaScript ######################################################-->
+    <script> 
+        function copyCode(button) {  var codeElement = button.nextElementSibling; var codeToCopy = codeElement.textContent;       var tempTextArea = document.createElement('textarea');  tempTextArea.value = codeToCopy; document.body.appendChild(tempTextArea);   tempTextArea.select(); document.execCommand('copy'); document.body.removeChild(tempTextArea); button.textContent = button.getAttribute('data-label-copied'); button.classList.add('copied'); setTimeout(function() { button.textContent = button.getAttribute('data-label-copy');  button.classList.remove('copied'); }, 2000); } window.onload = function() { var button = document.querySelector(".butão-copiar");  button.onclick = function() {   copyCode(button);   };  }; 
+    </script>
+</body>
+</html>
