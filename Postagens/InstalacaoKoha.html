@@ -32,7 +32,7 @@
         </div>
         <h2 class="parte">Como usar este tutorial?</h2>
 
-            <p>Todos os comandos, precedidos do caractere ‘#’, devem ser digitados no prompt de comandos ‘Terminal’ (semelhante ao cmd no Windows). Copie os caracteres depois do ‘#’ e cole no terminal para facilitar.</p>
+            <p>Siga os passos na sequência que se apresentam. Copie os comandos clicando em 'Copiar' nas caixas de códigos e cole no aplitativo 'Terminal' do seu sistema Linux (Debian, Ubuntu, Minte e demais derivados do Debian). Esse aplicativo é semelhante ao CMD ou Power Shell no Windows</p>
         
         <h2 class="parte">Parte 1 – Instalação e configuração no servidor Ubuntu</h2>
 
@@ -191,7 +191,7 @@
             <p class="passos">PASSO 7 - Instalar o pacote koha-common</p>
                 <pre class="caixa-de-codigo">
                     <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-                    <p class="codigo">#sudo apt install koha-common</p>
+                    <p class="codigo">sudo apt install koha-common</p>
                 </pre>
 
                 <span class="tooltip-wrapper">
@@ -275,7 +275,7 @@
                 <p>4º Configurar o Apache para escutar as portas para interface administrativa e para o OPAC:</p>
                     <pre class="caixa-de-codigo">
                         <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-                        <p class="codigo"># sudo nano /etc/apache2/ports.conf</p>
+                        <p class="codigo">sudo nano /etc/apache2/ports.conf</p>
                     </pre>
                 
                 <p>Será aberta a janela a segui </p>
@@ -336,7 +336,7 @@
                 <p>1º Habilitar a instânica</p>
                 <pre class="caixa-de-codigo">
                     <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-                    <p class="codigo">#sudo koha-plack --enable nomebiblioteca</p>
+                    <p class="codigo">sudo koha-plack --enable nomebiblioteca</p>
                 </pre>
 
                 <span class="tooltip-wrapper">
@@ -349,7 +349,7 @@
                 <p>2º Inciar a execução da instância do Koha:</p>
                 <pre class="caixa-de-codigo">
                     <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-                    <p class="codigo">#sudo koha-plack --start nomebiblioteca</p>
+                    <p class="codigo">sudo koha-plack --start nomebiblioteca</p>
                 </pre>
                 <span class="tooltip-wrapper">
                     <span style="cursor: help; padding-left: 5px; font-style: italic;">&lt;Entenda&gt;</span>
@@ -360,7 +360,7 @@
                 <p>3º: Reiniciar o Apache para aplicar as alterações:</p>
                 <pre class="caixa-de-codigo">
                     <button class="butão-copiar" data-label-copy="Copiar" data-label-copied="Copiado" onclick="copyCode(this)">Copiar</button>
-                    <p class="codigo">#sudo service apache2 restart</p>
+                    <p class="codigo">sudo service apache2 restart</p>
                 </pre>
 
             <p class="passos">Passo 12 - Instalar a tradução do Português do Brasil</p>
@@ -430,7 +430,7 @@
                     <p>Exemplo: ‘http://localhosta:1024’</p>
                     <p>Caso queira se conectar ao servidor de outra máquina via internet deverá usar o endereço IP da máquina em que foi instalado o Koha digitando (http://ipdamaquina:8080)</p>
                     <p>Para saber o endereço ip do servidor que tem o koha instalado faça o  seguinte:</p>
-                    <p>Dite no terminal (Debian ou Ubuntu) onde o koha foi instalado '#hostname -I'</p>
+                    <p>Dite no terminal (Debian ou Ubuntu) onde o koha foi instalado 'hostname -I'</p>
                     <p>Deve aparecer algo assim: ‘192.168.1.10’</p>
                     
                 </div>
